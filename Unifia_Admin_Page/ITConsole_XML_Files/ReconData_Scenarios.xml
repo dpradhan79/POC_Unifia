@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestScenarios>
+<!--<TestScenario name="TestData\SeedDataScript.sql" runflag="true"/>-->
+<TestScenario name="TestData\empty.sql" runflag="true"/>
+<TestScenario sequence="1" name="ReconScanData_ITConsole" path="TestData" runflag="true" resetDBflag="false"/>
+ </TestScenarios>

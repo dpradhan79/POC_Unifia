@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Unifia_Admin_Page">
+  
+  <test name="BasicLogin">
+    <classes>
+       <class name="AdminUserStories.BasicLogon_GWGen" />
+    </classes>
+  </test>
+  
+  <test name="Scopes">
+    <classes>
+       <class name="AdminUserStories.Scopes.ScopeDetailsGWGen" />
+    </classes>
+  </test>
+  
+   <test name="Scanner">
+    <classes>
+       <class name="AdminUserStories.Scanner.ScannerDetailsGWGen" />
+    </classes>
+  </test>
+  
+   <test name="AssignBarCode">
+    <classes>
+       <class name="AdminUserStories.AssignBarCode.AssignBarcodeDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="ScopeSafety">
+    <classes>
+       <class name="AdminUserStories.ScopeSafety.ScopeSafetyDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="AccessPoint">
+    <classes>
+       <class name="AdminUserStories.AccessPoint.AccessPointDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="ScopeType">
+    <classes>
+       <class name="AdminUserStories.ScopeType.ScopeTypeDetails_GWGen" />
+    </classes>
+  </test>
+  
+  <test name="Staff Details">
+    <classes>
+       <class name="AdminUserStories.Staff.StaffDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="Exam Type">
+    <classes>
+       <class name="AdminUserStories.ExamType.ExamTypeDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="Facility">
+    <classes>
+       <class name="AdminUserStories.Facility.FacilityGWGen" />
+    </classes>
+  </test>
+  
+  <test name="Location">
+    <classes>
+       <class name="AdminUserStories.Location.LocationDetailGWGen" />
+    </classes>
+  </test>
+  
+  <test name="User">
+    <classes>
+       <class name="AdminUserStories.User.UserDetailsGWGen" />
+    </classes>
+  </test>
+  
+</suite>

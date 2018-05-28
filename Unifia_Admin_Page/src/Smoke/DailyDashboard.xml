@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="DailyDashboard">
+	<listeners>
+		<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+	</listeners>
+
+	<test name="DashboardDataWithoutKE">
+		<classes>
+			<class name="DailyDashBoard.DashboardDataWithoutKE" />
+		</classes>
+	</test> 
+	
+	<test name="StorageArea">
+		<classes>
+			<class name="DailyDashBoard.StorageArea" />
+		</classes>
+	</test>
+	
+	<test name="ExamQueue">
+		<classes>
+			<class name="DailyDashBoard.ExamQueue" />
+		</classes>
+	</test>
+	
+	<test name="OutOfFacility">
+		<classes>
+			<class name="DailyDashBoard.OutOfFacility" />
+		</classes>
+	</test>
+	
+	<test name="ProcedureRoom">
+		<classes>
+			<class name="DailyDashBoard.ProcedureRoom" />
+		</classes>
+	</test>
+	
+	<test name="AwaitingManualCleaning">
+		<classes>
+			<class name="DailyDashBoard.AwaitingManualCleaning" />
+		</classes>
+	</test>
+	
+	<test name="SoiledRoom">
+		<classes>
+			<class name="DailyDashBoard.SoiledRoom" />
+		</classes>
+	</test>
+	
+	<test name="AwaitingReprocessing">
+		<classes>
+			<class name="DailyDashBoard.Awaiting_Reprocessing" />
+		</classes>
+	</test>
+	
+	<test name="ReprocessorsWithoutKE">
+		<classes>
+			<class name="DailyDashBoard.ReprocessorsWithoutKE" />
+		</classes>
+	</test>
+	
+	 <test name="QVTabsAuthorization">
+		<classes>
+			<class name="DailyDashBoard.QvTabsAuthorization" />
+		</classes>
+	</test> 
+	
+	
+	<test name="ReprocessorsWithKE">
+		<classes>
+			<class name="DailyDashBoard.ReprocessorsWithKE" />
+		</classes>
+	</test>
+
+</suite>

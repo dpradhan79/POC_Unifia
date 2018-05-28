@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="KE_EndtoEnd_RegressionTest">
+
+	<listeners>
+		<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+	</listeners>
+    
+   <test name="KE_HappyPath_CycleMgmt">
+    <classes>
+       <class name="Regression.KE_HappyPath_CycleMgmt"/>
+    </classes>
+  </test>
+    
+  <test name="KE_UnexpectedTermination_CycleMgmt">
+    <classes>
+       <class name="Regression.KE_UnexpectedTermination_CycleMgmt"/>
+    </classes>
+  </test>
+  
+    <test name="KE_UnexpectedTerminationSwitchRepro_CycleMgmt">
+    <classes>
+       <class name="Regression.KE_UnexpectedTerminationSwitchRepro_CycleMgmt"/>
+    </classes>
+  </test>
+    
+ </suite>
+

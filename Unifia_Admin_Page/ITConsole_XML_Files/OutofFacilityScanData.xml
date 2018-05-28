@@ -1,0 +1,1633 @@
+<Scenario Name="OutofFacilityScans" Description="Out of Facility Scans" Version="1.6.9145">
+  <ScanDateTime Offset="0" Unit="Days" />
+  <SimulatedMode Value="true" />
+  <Group Sequence="1" Name="OutOfFacilityMinus1" Description="">
+    <ScanDateTime Offset="-1" Unit="Days" />
+    <Scan Sequence="1" Description="Scope2 into repo 1">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:00:01" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="staff">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:00:11" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="MRC Pass">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:02:10" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="MRCPass" Value="MRCPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="staff">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:02:13" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Scope2 out of repro1">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:13:54" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="6" Description="staff">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:13:57" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="7" Description="RoomStatus ">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:14:01" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="Available" Value="Available" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="8" Description="Scope 2 in PR1">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:23:15" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="9" Description="Staff IN PR1">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:23:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T16" Value="T16" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="10" Description="Patient">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:23:54" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="Patient" />
+      <ScanItem Name="MRN00051" Value="MRN00051" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="11" Description="Physician">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:24:04" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="MD06" Value="MD06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="12" Description="PR Start">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:24:14" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ProcedureStart" Value="ProcedureStart" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="13" Description="PR End">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:34:04" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ProcedureEnd" Value="ProcedureEnd" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="14" Description="Scope2 preclean">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:34:14" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="15" Description="staff">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:34:18" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T15" Value="T15" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="16" Description="Needs Cleaning">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:34:38" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="NeedsCleaning" Value="NeedsCleaning" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="17" Description="Available">
+      <Scanner Name="PR1" Value="024285" />
+      <ScanTime Value="20:34:48" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="Available" Value="Available" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="18" Description="Scope2 into sink1">
+      <Scanner Name="Sink1" Value="024286" />
+      <ScanTime Value="20:44:08" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="19" Description="staff">
+      <Scanner Name="Sink1" Value="024286" />
+      <ScanTime Value="20:44:18" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T14" Value="T14" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="20" Description="LTPass">
+      <Scanner Name="Sink1" Value="024286" />
+      <ScanTime Value="20:44:28" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="LeakTestPass" Value="LeakTestPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="21" Description="MC Start">
+      <Scanner Name="Sink1" Value="024286" />
+      <ScanTime Value="20:44:31" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ManualCleanStart" Value="ManualCleanStart" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="22" Description="MC End">
+      <Scanner Name="Sink1" Value="024286" />
+      <ScanTime Value="20:47:35" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ManualCleanEnd" Value="ManualCleanEnd" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="23" Description="Scope2 into Bioburden">
+      <Scanner Name="Bioburden1" Value="017010" />
+      <ScanTime Value="20:48:15" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="24" Description="Bio Results pass">
+      <Scanner Name="Bioburden1" Value="017010" />
+      <ScanTime Value="20:48:21" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="BioburdenTesting" />
+      <ScanItem Placeholder="true" Name="Pass" Value="Pass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="25" Description="BioKeyEntry">
+      <Scanner Name="Bioburden1" Value="017010" />
+      <ScanTime Value="20:48:24" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="26" Description="Bio staff">
+      <Scanner Name="Bioburden1" Value="017010" />
+      <ScanTime Value="20:48:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T16" Value="T16" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="27" Description="Scope2 into repo 1">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:49:27" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="28" Description="staff">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:49:37" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="29" Description="MRC Pass">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:50:47" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="MRCPass" Value="MRCPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="30" Description="staff">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="20:50:57" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="31" Description="Scope2 out of repro1">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="21:15:07" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="32" Description="staff">
+      <Scanner Name="Reprocessor1" Value="015314" />
+      <ScanTime Value="21:16:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="33" Description="Culture Scan scope2">
+      <Scanner Name="CultureA" Value="019313" />
+      <ScanTime Value="21:17:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="34" Description="Staff Culture scan">
+      <Scanner Name="CultureA" Value="019313" />
+      <ScanTime Value="21:17:10" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="35" Description="Scope2 into CultureCab">
+      <Scanner Name="Culture Hold Cabinet" Value="019001" />
+      <ScanTime Value="21:28:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="36" Description="cabinet1">
+      <Scanner Name="Culture Hold Cabinet" Value="019001" />
+      <ScanTime Value="21:28:35" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="37" Description="staff">
+      <Scanner Name="Culture Hold Cabinet" Value="019001" />
+      <ScanTime Value="21:28:45" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="38" Description="Scope2 into Out of hold cabinet">
+      <Scanner Name="Culture Hold Cabinet" Value="019001" />
+      <ScanTime Value="21:28:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope2" Value="e004015040926c20" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="39" Description="Culture Pass">
+      <Scanner Name="Culture Hold Cabinet" Value="019001" />
+      <ScanTime Value="21:27:15" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="40" Description="Staff">
+      <Scanner Name="Culture Hold Cabinet" Value="019001" />
+      <ScanTime Value="21:27:23" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="41" Description="Scope 3 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope3" Value="e004015040926294" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="42" Description="Scope 3 OOFOlympusRepair">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:57:02" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Olympus Repair" Value="Olympus Repair" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="43" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:02" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="44" Description="Scope 4 OOF ">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="15:01:02" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope4" Value="e00401504092a32e" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="45" Description="Scope4 OOF Repairshop1">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="03:01:05" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Repair shop 1" Value="Repair shop 1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="46" Description="Staff OOFScope">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="15:02:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="47" Description="Scope4 back in Facility">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="15:10:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope4" Value="e00401504092a32e" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="48" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="15:10:07" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="49" Description="Scope4 into cabinet1">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="15:11:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope4" Value="e00401504092a32e" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="50" Description="cabinet1">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="15:01:00" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="51" Description="Staff Cabinet checkin">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="15:11:55" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="2" Name="Scope5Out9days" Description="">
+    <ScanDateTime Offset="-9" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Scope 5 OlympusRepair">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:57:02" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Olympus Repair" Value="Olympus Repair" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="3" Name="Scope5Back8days" Description="">
+    <ScanDateTime Offset="-8" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 back">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:57:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:02" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope5 into cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:30" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="2" Value="2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff Cabinet checkin">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="4" Name="Scope5Out7days" Description="">
+    <ScanDateTime Offset="-7" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 checkout">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:56:10" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:40" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope 5 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="Scope 5 OlympusRepair">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:57:02" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Olympus Repair" Value="Olympus Repair" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="5" Name="Scope5Back6days" Description="">
+    <ScanDateTime Offset="-6" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 Back">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:57:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:02" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope5 into cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:30" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="2" Value="2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff Cabinet checkin">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="6" Name="Scope5Out5days" Description="">
+    <ScanDateTime Offset="-5" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 checkout">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:56:10" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:40" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope 5 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="Scope 5 Facility4">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:57:02" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Facility 4" Value="Facility 4" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="7" Name="Scope5Back4days" Description="">
+    <ScanDateTime Offset="-4" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 Back">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:57:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:02" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope5 into cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:30" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="2" Value="2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff Cabinet checkin">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="8" Name="Scope5Out3days" Description="">
+    <ScanDateTime Offset="-3" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 checkout">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:56:10" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:40" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope 5 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:56:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="Scope 5 Facility4">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:57:02" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Facility 4" Value="Facility 4" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="9" Name="Scope5Back2days" Description="">
+    <ScanDateTime Offset="-2" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 5 Back">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:57:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:58:02" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope5 into cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope5" Value="e004015040926037" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="cabinet2">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:30" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="2" Value="2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff Cabinet checkin">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="14:59:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="10" Name="Scope6toFcility2" Description="">
+    <ScanDateTime Offset="-1" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 6 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="20:00:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Scope 6 Reapir shop2">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="20:00:15" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Repair shop 2" Value="Repair shop 2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="20:00:33" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="F1Scope6 into F2 repo 1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:00:01" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:00:11" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="6" Description="MRC Pass">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:02:10" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="MRCPass" Value="MRCPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="7" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:02:13" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="8" Description="F1Scope6 out of F2 repro1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:13:54" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="9" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:13:57" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="10" Description="RoomStatus ">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:14:01" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="Available" Value="Available" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="11" Description="F1Scope 6 in F2 PR1">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:23:15" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="12" Description="Staff IN F2 PR1">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:23:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T16" Value="T16" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="13" Description="Patient">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:23:54" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="Patient" />
+      <ScanItem Name="MRN00051" Value="MRN00051" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="14" Description="Physician">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:24:04" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="MD06" Value="MD06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="15" Description="PR Start">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:24:14" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ProcedureStart" Value="ProcedureStart" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="16" Description="PR End">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:04" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ProcedureEnd" Value="ProcedureEnd" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="17" Description="F1Scope6 preclean">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:14" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="18" Description="staff">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:18" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T15" Value="T15" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="19" Description="Needs Cleaning">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:38" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="NeedsCleaning" Value="NeedsCleaning" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="20" Description="Available">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:48" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="Available" Value="Available" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="21" Description="F1 Scope6 into F2sink1">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:08" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="22" Description="staff">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:18" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T14" Value="T14" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="23" Description="LTPass">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:28" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="LeakTestPass" Value="LeakTestPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="24" Description="MC Start">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:31" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ManualCleanStart" Value="ManualCleanStart" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="25" Description="MC End">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:47:35" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ManualCleanEnd" Value="ManualCleanEnd" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="26" Description="F1 Scope6 into Bioburden">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:15" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="27" Description="Bio Results pass">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:21" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="BioburdenTesting" />
+      <ScanItem Placeholder="true" Name="Pass" Value="Pass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="28" Description="BioKeyEntry">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:24" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="29" Description="Bio staff">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T16" Value="T16" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="30" Description="F1 Scope6 into F2 repo 1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:49:27" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="31" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:49:37" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="32" Description="MRC Pass">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:50:47" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="MRCPass" Value="MRCPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="33" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:50:57" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="34" Description="F1 Scope6 out of F2 repro1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="21:15:07" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope6" Value="e004015040924a80" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="35" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="21:16:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="11" Name="Scope7OutToFacilityandback" Description="">
+    <ScanDateTime Offset="-3" Unit="Days" />
+    <Scan Sequence="1" Description="F1Scope 7 OOF">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="19:00:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="F1Scope 7 Facility4">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="19:00:05" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Facility 4" Value="Facility 4" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Staff">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="19:00:41" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="F1Scope7 into F2 repo 1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:00:01" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:00:11" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="6" Description="MRC Pass">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:02:10" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="MRCPass" Value="MRCPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="7" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:02:13" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="8" Description="F1Scope7 out of F2 repro1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:13:54" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="9" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:13:57" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="10" Description="RoomStatus ">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:14:01" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="Available" Value="Available" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="11" Description="F1Scope 7 in F2 PR1">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:23:15" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="12" Description="Staff IN F2 PR1">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:23:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T16" Value="T16" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="13" Description="Patient">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:23:54" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="Patient" />
+      <ScanItem Name="MRN00051" Value="MRN00051" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="14" Description="Physician">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:24:04" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="MD06" Value="MD06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="15" Description="PR Start">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:24:14" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ProcedureStart" Value="ProcedureStart" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="16" Description="PR End">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:04" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ProcedureEnd" Value="ProcedureEnd" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="17" Description="F1Scope7 preclean">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:14" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="18" Description="staff">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:18" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T15" Value="T15" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="19" Description="Needs Cleaning">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:38" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="NeedsCleaning" Value="NeedsCleaning" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="20" Description="Available">
+      <Scanner Name="F2 PR1" Value="124285" />
+      <ScanTime Value="20:34:48" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="Available" Value="Available" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="21" Description="F1Scope7 into F2 sink1">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:08" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="22" Description="staff">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:18" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T14" Value="T14" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="23" Description="LTPass">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:28" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="LeakTestPass" Value="LeakTestPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="24" Description="MC Start">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:44:31" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ManualCleanStart" Value="ManualCleanStart" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="25" Description="MC End">
+      <Scanner Name="F2 Sink1" Value="124286" />
+      <ScanTime Value="20:47:35" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="WorkflowEvent" />
+      <ScanItem Placeholder="true" Name="ManualCleanEnd" Value="ManualCleanEnd" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="26" Description="F1 Scope7 into Bioburden">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:15" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="27" Description="Bio Results pass">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:21" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="BioburdenTesting" />
+      <ScanItem Placeholder="true" Name="Pass" Value="Pass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="28" Description="BioKeyEntry">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:24" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="29" Description="Bio staff">
+      <Scanner Name="F2 Bioburden1" Value="117010" />
+      <ScanTime Value="20:48:25" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T16" Value="T16" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="30" Description="F1 Scope7 into F2 repo 1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:49:27" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="31" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:49:37" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="32" Description="MRC Pass">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:50:47" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="TestResult" />
+      <ScanItem Placeholder="true" Name="MRCPass" Value="MRCPass" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="33" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="20:50:57" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="34" Description="F1 Scope7 out of F2 repro1">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="21:15:07" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="35" Description="staff">
+      <Scanner Name="F2 Reprocessor1" Value="115314" />
+      <ScanTime Value="21:16:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T06" Value="T06" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="36" Description="Scope 7  back to Facility F1">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="21:40:30" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="37" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="21:40:51" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="38" Description="F1Scope 7 OOF">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="21:50:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="39" Description="F1Scope 7 Repair shop 2">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="21:50:05" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Repair shop 2" Value="Repair shop 2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="40" Description="Staff">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="21:50:51" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="41" Description="F1Scope 7 back">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="21:55:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="42" Description="Staff">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="21:55:51" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="43" Description="F1Scope 7 OOF">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="22:00:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="44" Description="F1Scope 7 Repair shop 2">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="22:00:05" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Repair shop 2" Value="Repair shop 2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="45" Description="Staff">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="22:00:51" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="46" Description="F1Scope 7 back">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="22:05:00" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="47" Description="Staff">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="22:05:51" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="48" Description="Scope7  into cabinet1">
+      <Scanner Name="F1 StorageA" Value="018880" />
+      <ScanTime Value="22:10:10" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope7" Value="e00401504092a30f" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="49" Description="cabinet1">
+      <Scanner Name="F1 StorageA" Value="018880" />
+      <ScanTime Value="22:10:25" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="50" Description="Staff Cabinet checkin">
+      <Scanner Name="F1 StorageA" Value="018880" />
+      <ScanTime Value="22:10:45" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="12" Name="Scope8 scanned using Admin no location" Description="">
+    <ScanDateTime Offset="-1" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 8 withoutOOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:40:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope8" Value="e00401504092737e" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:40:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="13" Name="Scope9OutAndBackToFacility" Description="">
+    <ScanDateTime Offset="-2" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 9 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="22:12:05" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope9" Value="e004015040926fe2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Scope 9 OlympusRepair">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="22:12:36" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Olympus Repair" Value="Olympus Repair" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="22:12:48" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="Scope 9 back to Facility">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="22:25:05" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope9" Value="e004015040926fe2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="22:25:34" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="6" Description="Scope9 into cabinet1">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="22:25:48" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope9" Value="e004015040926fe2" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="7" Description="cabinet1">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="22:25:53" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="8" Description="Staff Cabinet checkin">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="22:25:58" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="14" Name="Scope10OutAndBackToFacility" Description="">
+    <ScanDateTime Offset="-1" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 10 OOF">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="11:04:12" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope10" Value="e00401504092af6e" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Scope 10 OlympusRepair">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="11:04:28" />
+      <ScanDataType Value="Barcode_UPC_A" />
+      <ScanItemType Value="OutOfFacilityLocation" />
+      <ScanItem Placeholder="true" Name="Olympus Repair" Value="Olympus Repair" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="23:04:42" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="Scope 10 back to Facility">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="23:27:10" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope10" Value="e00401504092af6e" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="23:27:28" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="6" Description="Scope10 into cabinet1">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="23:05:09" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="Scope10" Value="e00401504092af6e" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="7" Description="cabinet1">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="23:05:27" />
+      <ScanDataType Value="Barcode_ManualInput" />
+      <ScanItemType Value="KeyEntry" />
+      <ScanItem Name="1" Value="1" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="8" Description="Staff Cabinet checkin">
+      <Scanner Name="StorageA" Value="018880" />
+      <ScanTime Value="23:05:42" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+  <Group Sequence="15" Name="Scope11 scanned using Admin no location" Description="">
+    <ScanDateTime Offset="-2" Unit="Days" />
+    <Scan Sequence="1" Description="Scope 11 withoutOOF">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:40:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope11" Value="e00401504092482b" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="2" Description="Staff">
+      <Scanner Name="Administration" Value="016311" />
+      <ScanTime Value="14:40:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="3" Description="Scope 11 back to Facility">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:50:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope11" Value="e00401504092482b" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="4" Description="Staff">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="14:50:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="5" Description="Scope 11 Out no OOFLocation">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="15:05:50" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Scope" />
+      <ScanItem Placeholder="true" Name="F1 Scope11" Value="e00401504092482b" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+    <Scan Sequence="6" Description="Staff">
+      <Scanner Name="F1 Administration" Value="016311" />
+      <ScanTime Value="15:05:56" />
+      <ScanDataType Value="NFC_ISO15693" />
+      <ScanItemType Value="Staff" />
+      <ScanItem Placeholder="true" Name="T01" Value="T01" />
+      <ScanMode Value="RealTime" />
+    </Scan>
+  </Group>
+</Scenario>

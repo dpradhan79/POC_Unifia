@@ -1,0 +1,552 @@
+
+package Regression;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Arrays;
+
+import org.graphwalker.core.condition.StopConditionException;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import TestFrameWork.Unifia_Admin_Selenium;
+import TestFrameWork.Emulator.GetIHValues;
+import TestFrameWork.Emulator.Emulator_Actions;
+import TestFrameWork.Emulator.Emulator_Verifications;
+import TestFrameWork.RegressionTest.*;
+import TestFrameWork.RegressionTest.ReprocessingRoom.*;
+import TestFrameWork.RegressionTest.ProcedureRoom.*;
+import TestFrameWork.RegressionTest.SoiledArea.*;
+import TestFrameWork.RegressionTest.StorageArea.*;
+import TestFrameWork.RegressionTest.AdminScanner.*;
+import TestFrameWork.UnifiaAdminGeneralFunctions.GeneralFunc;
+import TestFrameWork.UnifiaAdminGeneralFunctions.TestDataFunc;
+import TestFrameWork.UnifiaAdminLandingPage.LandingPage_Actions;
+import TestFrameWork.UnifiaAdminUserPage.User_Actions;
+
+public class LTFail_OutOFFacility_CycleMgmt {
+	/**
+	 * Nicole McKinley 8/17/2016 
+	 * 
+	 * Regression Test of Cycle Mgmt - when Leak Test Fails, and the scope is sent out for repair and then checked back into the facility 
+	 * and into the reprocessor and then into storage area. 
+	 * The Test will First initialize 2 scopes by scanning the whole way through the workflow
+	 * This test will not verify anything with KE, culture or bioburden
+	 * 
+	 * The Test Data it will use
+	 * 
+	 *  Scopes:  Scope1, Scope2 
+	 *  
+	 *  Location Scanners:
+	 * 	-  Procedure Room:  Procedure Room 1
+	 * 	-  Soiled Room:  Sink 1 
+	 * 	-  Reprocessing:  Reprocessor 1
+	 * 	-  Cabinet:  Storage Area A (4 cabinets)
+	 * 	-  Admin:  Administration
+	 * 
+	 * 
+	 * 	-  Staff1, Staff2, Staff3, Staff4, Staff5, Staff6
+	 */
+	
+	public TestFrameWork.Emulator.GetIHValues IHV;
+	public TestFrameWork.Emulator.Emulator_Actions EM_A;
+	public TestFrameWork.Emulator.Emulator_Verifications EM_V;
+	public TestFrameWork.RegressionTest.ReprocessingRoom.ReprocessingRegression_Actions Repro_A;
+	public TestFrameWork.RegressionTest.ProcedureRoom.PR_Regression_Actions PR_A;
+	public TestFrameWork.RegressionTest.SoiledArea.SoiledRegression_Actions Soiled_A;
+	public TestFrameWork.RegressionTest.StorageArea.StorageRegression_Actions Storage_A;
+	public TestFrameWork.RegressionTest.AdminScanner.AdminRegression_Actions Admin_A;
+	public TestFrameWork.RegressionTest.Regression_Actions R_A;
+	public TestFrameWork.RegressionTest.Regression_Verifications R_V;
+	public TestFrameWork.UnifiaAdminLoginPage.Login_Actions LGPA;
+	public GeneralFunc GF;
+	public String OverallResult="Pass";	
+	public TestFrameWork.UnifiaAdminLandingPage.LandingPage_Actions LP_A;
+	public TestFrameWork.UnifiaAdminUserPage.User_Actions UA;
+
+	public String StartProcScan="Yes"; //perform the Start Procedure Scan
+	public String EndProcScan="Yes"; //perform the End Procedure Scan
+	public String Room="";
+
+	public String Reason1="New Scope", Reason2="New Scope";
+
+	String [] temp= new String[2];
+
+	public Boolean Res;
+	
+	//Scope names used in this test
+	public String Scope1="Scope1";
+	
+	public int Scope1ID; //Scope1 primary key
+	
+	public String Staff1="Tech1 Tech1(T01)";
+	public String Staff1ID="T01";
+	public String Staff2="Tech2 Tech2(T02)";
+	public String Staff2ID="T02";
+	public String Staff3="Tech3 Tech3(T03)";
+	public String Staff3ID="T03";
+	public String Staff4="Tech4 Tech4(T04)";
+	public String Staff4ID="T04";
+	public String Staff5="Tech5 Tech5(T05)";
+	public String Staff5ID="T05";
+	public String Phy="Physician1 Physician1(MD01)";
+	public String Phy2="";
+
+	//Location names used for scanning.
+	public String PR1="Procedure Room 1"; 
+	public String Repro1="Reprocessor 1";
+	public String Sink1="Sink 1";
+	public String Sink2="Sink 2";
+	public String StorageA="Storage Area A";
+	public String Admin="Administration";
+	private TestDataFunc TDF;
+	
+	public int CycleCount1=0;  //Cycle count for scope1
+	
+	public String Patient="MRN111111"; //PatientID
+	public String AdmitPatientBarcode="Yes"; //Scan the Admit Patient barcode
+	public String PhyScannedInWaiting="No";
+	public String Culture1="NA"; //Culture was not obtained for scope1
+	public String Culture2="NA"; //Culture was not obtained for scope1
+	public String CultureAssociationID1="0"; //associationID if culture was obtained for scope1, since it was not obtained =0
+	public String CultureAssociationID2="0"; //associationID if culture was obtained for scope1, since it was not obtained =0
+	public String LTFail="Leak Test Fail";
+	public String LTPass="Leak Test Pass";
+	public String MRCPass="MRC Pass";
+	public String MRCFail="MRC Fail";
+	public String MCStart="Yes"; //perform the Manual Clean Start Scan 
+	public String MCEnd="Yes"; //perform the Manual Clean End Scan 
+	public String CultureObtained="No";//culture is not obtained
+	public String Cabinet="1"; //check the scopes into cabinet 1
+	public String Destination="Destination 1";
+	public String UserName="qvtest01";
+	public String UserPwd="0lympu$";
+	
+	public String Description;
+	public static Connection conn= null;
+	public int NumAssociations=7;
+	public int[] ExpectedScope1Cycle1= new int[NumAssociations]; //an array of the associationID's in ScopeCycle table for scope1 cycle1. the first item specifies how many associationIDs there will be
+	public int[] ExpectedScope1Cycle2= new int[NumAssociations]; //an array of the associationID's in ScopeCycle table for scope1 cycle2. the first item specifies how many associationIDs there will be
+	public int[] ExpectedScope1Cycle3= new int[NumAssociations]; //an array of the associationID's in ScopeCycle table for scope1 cycle3. the first item specifies how many associationIDs there will be
+
+	public int KE=0;
+	public int Bioburden=0;
+	public int Culture=0;
+
+	@Test(dataProvider="BrowserandURL",dataProviderClass=Unifia_Admin_Selenium.class)
+	public void Test(String browserP, String URL, String AdminDB) throws Exception {
+		//select the Driver type Grid or local
+		if (Unifia_Admin_Selenium.parallelExecutionType && Unifia_Admin_Selenium.driverType.equalsIgnoreCase("LOCAL")){
+			System.out.println("If execution type is parallel i.e., 'parallelExecutionType = true' then driverType should be always 'GRID'");
+			System.exit(1);
+		}
+		Unifia_Admin_Selenium.resultFlag="Pass";
+		Unifia_Admin_Selenium.DriverSelection(browserP,URL,AdminDB);
+
+		//Inserting DB data
+		//GF.InsertSimulatedScanSeedData(Unifia_Admin_Selenium.url, Unifia_Admin_Selenium.user, Unifia_Admin_Selenium.pass,KE, Bioburden, Culture);
+		TDF.insertKEMasterData(Unifia_Admin_Selenium.KE_Url,Unifia_Admin_Selenium.KE_UserName,Unifia_Admin_Selenium.KE_Pwd);
+		TDF.insertMasterData(Unifia_Admin_Selenium.url, Unifia_Admin_Selenium.user, Unifia_Admin_Selenium.pass,KE, Bioburden, Culture);
+		GF.RestartIISServices(Unifia_Admin_Selenium.Env, Unifia_Admin_Selenium.userName, Unifia_Admin_Selenium.IISPass);
+
+		Unifia_Admin_Selenium.Scope1ExpectedReproCount=0;
+		Unifia_Admin_Selenium.Scope1ExpectedExamCount=0;
+		Unifia_Admin_Selenium.Scope2ExpectedReproCount=0;
+		Unifia_Admin_Selenium.Scope2ExpectedExamCount=0;
+		Unifia_Admin_Selenium.Scope3ExpectedReproCount=0;
+		Unifia_Admin_Selenium.Scope3ExpectedExamCount=0;
+		Unifia_Admin_Selenium.Scope4ExpectedReproCount=0;
+		Unifia_Admin_Selenium.Scope4ExpectedExamCount=0;
+
+		Scope1ID=R_A.GetScopeID(Unifia_Admin_Selenium.connstring, Scope1);
+		
+		for(int i=0; i<7;i++){ //initialize the arrays for scope cycles
+			ExpectedScope1Cycle1[i]=999999999;
+			ExpectedScope1Cycle2[i]=999999999;
+			ExpectedScope1Cycle3[i]=999999999;
+
+		}
+
+		
+		Unifia_Admin_Selenium.XMLFileName="LTFail_OOF_CycleMgmt_Regression_";
+		Unifia_Admin_Selenium.XMLFileName=IHV.Start_Exec_Log(Unifia_Admin_Selenium.XMLFileName);
+		Unifia_Admin_Selenium.TestCaseNumber=1;
+
+		
+		LGPA.Launch_Unifia(Unifia_Admin_Selenium.Admin_URL);
+		UA.selectUserRoleNLogin(browserP, URL, Unifia_Admin_Selenium.roleMgr, Unifia_Admin_Selenium.userQV1, Unifia_Admin_Selenium.userQV1Pwd);
+		Unifia_Admin_Selenium.driverSelectionSecond(browserP,URL,AdminDB);
+		Unifia_Admin_Selenium.StepNum=1;
+		LGPA.Launch_UnifiaSecond(Unifia_Admin_Selenium.Emulator_URL);
+		
+		Thread.sleep(500);
+
+		//Start of the Test
+		
+		Description="Scan Scope "+Scope1+" starting at reprocessor into PR, sink, repro and then check into "+StorageA+" to initilize the scopes";
+		System.out.println("Starting Step:  "+Description);
+
+		String[][] ScanInfo= new String[][]{
+				{"Reprocessing1", Repro1,Staff1,Staff1ID, Reason1, Reason2,MRCPass},
+				{"ProcedureRoom", PR1, Staff2,Staff2ID,Phy, AdmitPatientBarcode, Patient, StartProcScan, EndProcScan, Culture1, CultureAssociationID1, Culture2, CultureAssociationID2},
+				{"Sink1",Sink1,Staff3,Staff3ID,LTPass, MCStart, MCEnd},
+				{"Sink2",Sink2,Staff4,Staff4ID,LTPass, MCStart, MCEnd},
+				{"Reprocessing2",Repro1,Staff1,Staff1ID, "Used in Procedure", "Used in Procedure",MRCPass},
+				{"StorageIn1",StorageA,Staff5,Staff5ID,Cabinet,CultureObtained},
+				{"StorageIn2",StorageA,Staff5,Staff5ID,Cabinet,CultureObtained},
+			};
+		CycleCount1++;
+		String[] InitialResult=R_A.InitialScans(Scope1, "", ScanInfo);
+		String Result=InitialResult[0];
+		
+		ExpectedScope1Cycle1[0]=5; //The number of associations in the ScopeCycle table for scope1 cycle1 
+		ExpectedScope1Cycle1[1]=Integer.parseInt(InitialResult[1]); //Procedure Room AssociationID
+		ExpectedScope1Cycle1[2]=Integer.parseInt(InitialResult[2]); //Scope1 Soiled Room AssociationID
+		ExpectedScope1Cycle1[3]=Integer.parseInt(InitialResult[4]); //Scope1 into Reprocessor AssociationID
+		ExpectedScope1Cycle1[4]=Integer.parseInt(InitialResult[6]); //MRC AssociationID
+		ExpectedScope1Cycle1[5]=Integer.parseInt(InitialResult[7]); //Scope1 out of Reprocessor AssociationID
+		
+		Arrays.sort(ExpectedScope1Cycle1); 
+
+		
+		temp=Result.split("-");
+		OverallResult=GF.FinalResult(temp[0], Result, OverallResult);
+		String Expected="Scopes "+Scope1+" initial scans ending in "+StorageA;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, OverallResult);
+
+		Thread.sleep(60000); //Wait 1 minute before scanning the scope out of the storage area.
+		
+		//Step 2 scan scope 1 out of Storage Area A
+		Unifia_Admin_Selenium.StepNum++;
+
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" into "+StorageA);
+		Description="Scan Scope "+Scope1+" out of "+StorageA;
+		Culture1="No"; //No culture obtained for scope
+			
+		String[] ResultStorageOutScope1=Storage_A.OutOfStorageAreaScans(StorageA,Scope1,Staff5,Staff5ID,Culture1,CultureAssociationID1,Integer.toString(CycleCount1));
+		String StorageOut_AssocScope1=ResultStorageOutScope1[0]; //AssociationID for Scope1 Storage Out scans
+		String OverallStorageOut_Result1=ResultStorageOutScope1[1]; //overall pass/fail of storage out scans. 
+		int[] ActualScope1Cycle1=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);//get the associationIDs in ScopeCycle table for scope1 cycle 1
+
+		String ResultScope1Cycle1=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle1, ActualScope1Cycle1); //verify if the scopecycle table actual values match the expected values. 
+		temp=ResultScope1Cycle1.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle1, OverallResult);
+		
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle1="+ResultScope1Cycle1);
+		Result="ResultScope1Cycle1="+ResultScope1Cycle1;
+
+		Expected="Scope "+Scope1+" was scanned out of "+StorageA+". The ScopeCycle table is correct.";
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		//scan scope 1 into PR1 - cycle count increases 
+		System.out.println("//scan scope 1 into PR1 - cycle count increases ");
+		Unifia_Admin_Selenium.StepNum++;
+		
+		CycleCount1++;
+		Culture1="NA";
+		Culture2="NA";
+
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+"  into "+PR1);
+		Description="Scan Scopes "+Scope1+" into "+PR1;
+		
+		String[] ResultPRScans=PR_A.PR_Scans(PR1, Scope1, "", Staff2,Staff2ID, Phy,Phy2, AdmitPatientBarcode, Patient, StartProcScan, EndProcScan, Culture1, Integer.parseInt(CultureAssociationID1), Culture2, Integer.parseInt(CultureAssociationID2), Integer.toString(CycleCount1));
+		
+		int PR_Assoc=Integer.parseInt(ResultPRScans[0]); //Procedure Room associationID
+		String OverallPR_Result=ResultPRScans[1];
+		temp=OverallPR_Result.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallPR_Result, OverallResult);
+
+		ExpectedScope1Cycle2[0]=1;//there's one item in ScopeCycle table for scope1 cycle 1
+		ExpectedScope1Cycle2[1]=PR_Assoc;
+
+		int[] ActualScope1Cycle2=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+
+		String ResultScope1Cycle2=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle2, ActualScope1Cycle2);
+		temp=ResultScope1Cycle2.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle2, OverallResult);
+
+		
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle2="+ResultScope1Cycle2);
+		Result="ResultScope1Cycle2="+ResultScope1Cycle2;
+
+		Expected="Scopes "+Scope1+" was used in "+PR1+". The ScopeCycle table is correct for CycleCount="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		//scan scope 1 into Sink1
+		Unifia_Admin_Selenium.StepNum++;
+		//CycleCount1++;
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" into "+Sink1);
+		Description="Scan Scopes "+Scope1+" into "+Sink1+" and perform Leak Test and Manual Cleaning.";
+		
+		String[] ResultSoiledScans1=Soiled_A.SoiledRoomScans(Sink1, Scope1, Staff3,Staff3ID, LTFail, MCStart, MCEnd, Integer.toString(CycleCount1));
+		int Scope1_SR_Assoc=Integer.parseInt(ResultSoiledScans1[0]);
+		String OverallSoiled_Result=ResultSoiledScans1[1];
+		temp=OverallSoiled_Result.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallSoiled_Result, OverallResult);
+		
+		ExpectedScope1Cycle2[0]=2;
+		ExpectedScope1Cycle2[2]=Scope1_SR_Assoc;
+
+		Arrays.sort(ExpectedScope1Cycle2);
+
+		ActualScope1Cycle2=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+		ResultScope1Cycle2=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle2, ActualScope1Cycle2);
+		temp=ResultScope1Cycle2.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle2, OverallResult);
+		
+		System.out.println("End Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle2="+ResultScope1Cycle2);
+		
+		Expected="Scopes "+Scope1+" was manually cleaned in "+Sink1+". The ScopeCycle table is correct for CycleCount1="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, ResultScope1Cycle2);
+
+		
+		//set PR to available
+		Unifia_Admin_Selenium.StepNum++;
+		Room="Available";
+		Unifia_Admin_Selenium.ScannerCount=Unifia_Admin_Selenium.ScannerCount+1;
+		Res = EM_A.ScanItem(PR1, "Workflow Event", "", Room, "");
+		System.out.println(Res);
+		Description="Scan of Work flow event 'Available' is done in "+ PR1;
+		Thread.sleep(8000);
+		
+		Expected="Room State is Avialable";
+		String ExpectedRmSt="Available";
+		
+		String RmState=IHV.Room_State(Unifia_Admin_Selenium.connstring, PR1);
+		Result=IHV.Result_Room_State(RmState, ExpectedRmSt, PR1);
+		temp=Result.split("-");
+		OverallResult=GF.FinalResult(temp[0], Result, OverallResult);
+
+		System.out.println(Unifia_Admin_Selenium.StepNum+":  "+Result);
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		
+		//scan scope 1 into reprocessor
+		Unifia_Admin_Selenium.StepNum++;
+		Reason1="Used in Procedure";
+		Reason2="";
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" into "+Repro1);
+		Description="Scan Scopes "+Scope1+" into "+Repro1;
+		
+		String[] ResultReproScans=Repro_A.ReprocessingRoomScans(Repro1, Scope1, "", Staff1,Staff1ID, Reason1, Reason2,MRCPass, Integer.toString(CycleCount1),"0");
+		
+		int Scope1InReproAssociationID=Integer.parseInt(ResultReproScans[0]);
+		int MRCAssociationID=Integer.parseInt(ResultReproScans[2]);
+		int Scope1OutReproAssociationID=Integer.parseInt(ResultReproScans[3]);
+		String OverallReproResult2=ResultReproScans[5];
+		String ResultScope1Reason=ResultReproScans[6];
+		temp=OverallReproResult2.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallReproResult2, OverallResult);
+
+		System.out.println("OverallResult="+OverallResult);
+
+		ExpectedScope1Cycle2[0]=5;
+		ExpectedScope1Cycle2[3]=Scope1InReproAssociationID;
+		ExpectedScope1Cycle2[4]=MRCAssociationID;
+		ExpectedScope1Cycle2[5]=Scope1OutReproAssociationID;
+
+		Arrays.sort(ExpectedScope1Cycle2);
+
+		ActualScope1Cycle2=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+
+		ResultScope1Cycle2=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle2, ActualScope1Cycle2);
+		temp=ResultScope1Cycle2.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle2, OverallResult);
+
+		System.out.println("End Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle2="+ResultScope1Cycle2);
+		Result="ResultScope1Cycle2="+ResultScope1Cycle2+". ResultScope1Reason="+ResultScope1Reason;
+
+		Expected="Scopes "+Scope1+" was reprocessed in "+Repro1+". The ScopeCycle table is correct for CycleCount="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		
+		//Scan scope 1 out of the facility for repair
+		Unifia_Admin_Selenium.StepNum++;
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" Out of Facility with "+Admin);
+		Description="Scan Scopes "+Scope1+" out of facility with scanner= "+Admin;
+		
+		String[] ResultOOFScans=Admin_A.OutOfFacilityScans(Admin,Scope1,Staff4,Staff4ID,Destination,Integer.toString(CycleCount1));
+
+		String OverallResultOOF=ResultOOFScans[1];
+		temp=OverallResultOOF.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallResultOOF, OverallResult);
+		ActualScope1Cycle2=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+
+		ResultScope1Cycle2=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle2, ActualScope1Cycle2);
+		temp=ResultScope1Cycle2.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle2, OverallResult);
+
+		System.out.println("End Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle2="+ResultScope1Cycle2);
+		Result="ResultScope1Cycle2="+ResultScope1Cycle2;
+
+		Expected="Scopes "+Scope1+" was scanned out of facility. The ScopeCycle table is correct for CycleCount="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		//Change the date for item history and scopestatus to -4 days
+		try{ //Get a value that exists in Unifia to modify.
+			//    		conn= DriverManager.getConnection(Unifia_Admin_Selenium.url, Unifia_Admin_Selenium.user, Unifia_Admin_Selenium.pass);
+			
+    		conn= DriverManager.getConnection(Unifia_Admin_Selenium.url, Unifia_Admin_Selenium.user, Unifia_Admin_Selenium.pass);	
+    		Statement statement = conn.createStatement();
+			String stmt="update ScopeStatus set LastUpdatedDateTime=DATEADD(Day,-4,LastUpdatedDateTime);\r\n"
+					+ "update ItemHistory set LastUpdatedDateTime=DATEADD(Day,-4,LastUpdatedDateTime), ReceivedDateTime=DATEADD(Day,-4,LastUpdatedDateTime), ProcessedDateTime=DATEADD(Day,-4,LastUpdatedDateTime);\r\n"
+					+ "update LocationStatus set LastUpdatedDateTime=DATEADD(Day,-4,LastUpdatedDateTime);";
+			System.out.println(stmt);
+			statement.executeUpdate(stmt);
+
+			statement.close();
+
+			conn.close();
+   			}
+			catch (SQLException ex){
+			    // handle any errors
+			    System.out.println("SQLException: " + ex.getMessage());
+			    System.out.println("SQLState: " + ex.getSQLState());
+			    System.out.println("VendorError: " + ex.getErrorCode());	
+		}
+
+		//Scan scope 1 into the facility after repair
+		CycleCount1++;
+
+		Unifia_Admin_Selenium.StepNum++;
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" Out of Facility with "+Admin);
+		Description="Scan Scopes "+Scope1+" into facility with scanner ="+Admin;
+		String[] ResultIntoFacilityScans=Admin_A.CheckIntoFacilityScans(Admin,Scope1,Staff4,Staff4ID,Integer.toString(CycleCount1));
+		
+		String OverallResultIntoFacility=ResultIntoFacilityScans[1];
+		temp=OverallResultIntoFacility.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallResultIntoFacility, OverallResult);
+		
+		ExpectedScope1Cycle3[0]=0;
+
+		int[] ActualScope1Cycle3=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+
+		String ResultScope1Cycle3=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle3, ActualScope1Cycle3);
+		temp=ResultScope1Cycle3.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle3, OverallResult);
+
+		System.out.println("End Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle3="+ResultScope1Cycle3);
+		Result="ResultScope1Cycle3="+ResultScope1Cycle3;
+
+		Expected="Scopes "+Scope1+" was scanned into the facility. The ScopeCycle table is correct for CycleCount="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		
+		//scan scope 1 into Sink1
+		
+		Unifia_Admin_Selenium.StepNum++;
+		//CycleCount1++;
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" into "+Sink1);
+		Description="Scan Scopes "+Scope1+" into "+Sink1+" and perform Leak Test and Manual Cleaning.";
+				
+		ResultSoiledScans1=Soiled_A.SoiledRoomScans(Sink1, Scope1, Staff3,Staff3ID, LTPass, MCStart, MCEnd, Integer.toString(CycleCount1));
+		Scope1_SR_Assoc=Integer.parseInt(ResultSoiledScans1[0]);
+		String OverallSoiled_Result2=ResultSoiledScans1[1];
+		temp=OverallSoiled_Result2.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallSoiled_Result2, OverallResult);
+				
+		ExpectedScope1Cycle3[0]=1;
+		ExpectedScope1Cycle3[1]=Scope1_SR_Assoc;
+
+		Arrays.sort(ExpectedScope1Cycle3);
+
+		ActualScope1Cycle3=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+		ResultScope1Cycle3=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle3, ActualScope1Cycle3);
+		temp=ResultScope1Cycle3.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle3, OverallResult);
+				
+		System.out.println("End Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle3="+ResultScope1Cycle3);
+			
+		Expected="Scopes "+Scope1+" was manually cleaned in "+Sink1+". The ScopeCycle table is correct for CycleCount1="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, ResultScope1Cycle3);
+		
+		//scan scope 1 into reprocessor
+		Unifia_Admin_Selenium.StepNum++;
+		//CycleCount1++;
+		Reason1="Returned to Facility";
+		Reason2="";
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" into "+Repro1);
+		Description="Scan Scopes "+Scope1+" into "+Repro1;
+		
+		String[] ResultReproScans2=Repro_A.ReprocessingRoomScans(Repro1, Scope1, "", Staff1,Staff1ID, Reason1, Reason2,MRCPass, Integer.toString(CycleCount1),"0");
+		
+		//''' tobe added
+		Scope1InReproAssociationID=Integer.parseInt(ResultReproScans2[0]);
+		MRCAssociationID=Integer.parseInt(ResultReproScans2[2]);
+		Scope1OutReproAssociationID=Integer.parseInt(ResultReproScans2[3]);
+		
+		String OverallReproResult3=ResultReproScans2[5];
+		ResultScope1Reason=ResultReproScans[6];
+		temp=OverallReproResult3.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallReproResult3, OverallResult);
+
+		System.out.println("OverallResult="+OverallResult);
+
+	
+		ExpectedScope1Cycle3[0]=4;
+		ExpectedScope1Cycle3[1]=Scope1_SR_Assoc;
+		ExpectedScope1Cycle3[2]=Scope1InReproAssociationID;
+		ExpectedScope1Cycle3[3]=MRCAssociationID;
+		ExpectedScope1Cycle3[4]=Scope1OutReproAssociationID;
+
+		Arrays.sort(ExpectedScope1Cycle3);
+
+		ActualScope1Cycle3=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+
+		ResultScope1Cycle3=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle3, ActualScope1Cycle3);
+		temp=ResultScope1Cycle3.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle3, OverallResult);
+
+		System.out.println("End Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle3="+ResultScope1Cycle3);
+		Result="ResultScope1Cycle3="+ResultScope1Cycle3+". ResultScope1Reason="+ResultScope1Reason;
+
+		Expected="Scopes "+Scope1+" was reprocessed in "+Repro1+". The ScopeCycle table is correct for CycleCount="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		
+		//scan scope 1 into Storage Area A
+		Unifia_Admin_Selenium.StepNum++;
+
+		System.out.println("Starting Step:  "+Unifia_Admin_Selenium.StepNum+" scan "+Scope1+" into "+StorageA);
+		Description="Scan Scopes "+Scope1+" into "+StorageA;
+		
+		String[] ResultStorageInScope1=Storage_A.IntoStorageAreaScans(StorageA,Scope1,Staff5,Staff5ID,Cabinet,CultureObtained,Integer.toString(CycleCount1));
+		
+		String StorageIn_AssocScope1=ResultStorageInScope1[0];
+		String OverallStorageIn_Result1=ResultStorageInScope1[1];
+		temp=OverallStorageIn_Result1.split("-");
+		OverallResult=GF.FinalResult(temp[0], OverallStorageIn_Result1, OverallResult);
+		
+		ActualScope1Cycle3=R_A.GetCycleIDs(Unifia_Admin_Selenium.connstring, Scope1ID, CycleCount1);
+
+		ResultScope1Cycle3=R_V.VerifyScopeCycleAssociations(ExpectedScope1Cycle3, ActualScope1Cycle3);
+		temp=ResultScope1Cycle3.split("-");
+		OverallResult=GF.FinalResult(temp[0], ResultScope1Cycle3, OverallResult);
+
+		
+		System.out.println("end Step:  "+Unifia_Admin_Selenium.StepNum+" ResultScope1Cycle3="+ResultScope1Cycle3);
+		Result="ResultScope1Cycle3="+ResultScope1Cycle3;
+
+		Expected="Scopes "+Scope1+" were put in "+StorageA+". The ScopeCycle table is correct for CycleCount="+CycleCount1;
+		IHV.Exec_Log_Result(Unifia_Admin_Selenium.XMLFileName, Description, Expected, Result);
+
+		IHV.Close_Exec_Log(Unifia_Admin_Selenium.XMLFileName, "Test Completed", Unifia_Admin_Selenium.TestCaseNumber);
+		if (Unifia_Admin_Selenium.resultFlag.contains("#Failed!#")){
+			org.testng.Assert.fail("Test has failed");
+		}
+		LP_A.CloseDriver();
+	}
+	
+	@AfterTest
+	public void PostTTest() throws IOException{
+		//System.out.println("The Test Case Run was:  "+TCResult);
+		//IHV.Close_Exec_Log(Unifia_Admin_Selenium.XMLFileName, TCResult);
+		LP_A.CloseDriver();
+	}
+}

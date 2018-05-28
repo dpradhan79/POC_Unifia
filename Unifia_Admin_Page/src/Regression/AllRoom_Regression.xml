@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AllRoom_RegressionMessages">
+   
+   <listeners>
+			<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+		</listeners>
+   
+   <test name="SoiledArea">
+    <classes>
+       <class name="ScannerMessages.SoiledRoom.RegressionSoiledRoom_GWGen" />
+    </classes>
+  </test>
+  
+
+<test name="ComplexScannerMessagesTesting">
+    <classes>
+       <class name="ScannerMessages.ComplexScannerMessagesTesting.ComplexScannerMessagesTesting" />
+    </classes>
+  </test>
+
+<test name="OtherScanner">
+    <classes>
+       <class name="ScannerMessages.OtherScanner.RegressionOtherScanner" />
+    </classes>
+  </test>
+      
+ <test name="ExamQueue">
+    <classes>
+       <class name="ScannerMessages.ExamQueue.RegressionExamQueue_GWGen" />
+    </classes>
+ </test>
+ 
+  <test name="ExamQueue_ProcRoom_GWGen">
+    <classes>
+       <class name="ScannerMessages.ExamQueue.RegressionExamQueue_ProcRoom_GWGen" />
+    </classes>
+  </test>
+  
+  
+  
+<test name="StorageArea">
+    <classes>
+       <class name="ScannerMessages.StorageArea.RegressionStorageArea_GWGen" />
+    </classes>
+ </test>
+  
+   <test name="ProcedureRoom">
+    <classes>
+       <class name="ScannerMessages.ProcedureRoom.RegressionProcedureRoom_GWGen" />
+    </classes>
+  </test> 
+  
+  <test name="ReprocessingRoom">
+    <classes>
+       <class name="ScannerMessages.ReprocessingRoom.RegressionReprocessingRoom_GWGen" />
+    </classes>
+  </test>
+  
+  <test name="BioBurdenArea">
+    <classes>
+       <class name="ScannerMessages.Bioburden.RegressionBioburdenRoom_GWGen" />
+    </classes>
+  </test>
+  
+   <test name="ReprocessingRoom_MRC">
+    <classes>
+       <class name="ScannerMessages.ReprocessingRoom.RegressionReprocessingRoom_MRC_GWGen" />
+    </classes>
+  </test>
+  
+  
+    
+ </suite>
+

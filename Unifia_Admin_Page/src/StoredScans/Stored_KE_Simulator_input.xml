@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='us-ascii'?> 
+<Simulator>
+<KEServer>
+	<!-- 10.170.93.104  for use with sprinttest-03 ...-->
+	<!-- 10.170.93.101  for use with sprinttest-04 ...-->
+	<!-- 10.170.93.102  for use with sprinttest-05 ...-->
+	<!-- 10.170.93.63   for use with sprinttest-07 ...-->
+	<!-- 10.170.93.61   for use with sprinttest-08 ...-->
+	<!-- 10.170.93.103  for use with sprinttest-09 ...-->	 
+	<ip>10.170.93.104</ip>
+	<User>ENDBACCS</User>
+	<PW>3ENDOWBS</PW>
+</KEServer>
+<!-- New if you want to clear all previous KE data -->
+<!-- Append if you want to append to existing KE data -->
+<DataType>Append</DataType> <!--  -->
+<NumberofCycles>1</NumberofCycles>
+<Cycle1>
+	 <NumberofScopes>2</NumberofScopes>
+	 <CycleEnd>Normal</CycleEnd>
+	 <!-- CycleEnd Values: Normal, Unexpected Termination, Unavailable etc...-->
+	 <OER> 
+		 <OERModel>OER-Pro</OERModel>  
+		 <OERSerialNumber>2000001</OERSerialNumber>
+		<Duration>5</Duration> 
+		<Lag>1</Lag> 
+	 </OER>
+	 <Scope1>
+		 <ScopeModel>183</ScopeModel>
+		 <ScopeSerialNumber>1122334</ScopeSerialNumber>
+	 </Scope1>
+	 <Scope2>
+		 <ScopeModel>184</ScopeModel>
+		 <ScopeSerialNumber>2233445</ScopeSerialNumber>
+	 </Scope2>
+	 <Staff>
+		<StartStaffID>T02</StartStaffID>
+	</Staff>
+ </Cycle1>
+ </Simulator>
+ 

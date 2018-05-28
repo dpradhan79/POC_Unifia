@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ExamManagement">
+
+	<listeners>
+		<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+	</listeners>
+
+	<test name="ExamSummary_Today">
+		<classes>
+			<class name="ExamSummary.ExamSummary_Today" />
+		</classes>
+	</test>
+
+	<test name="ExamManagement_Today">
+		<classes>
+			<class name="ExamManagement.ExamManagement_Today" />
+		</classes>
+	</test>
+
+	<test name="ExamSummary_Historical">
+		<classes>
+			<class name="ExamSummary.ExamSummary_Historical" />
+		</classes>
+	</test>
+
+	<test name="ExamManagement_Historical">
+		<classes>
+			<class name="ExamManagement.ExamManagement_Historical" />
+		</classes>
+	</test>
+	
+	<test name="ExamManagement_SearchFilters">
+		<classes>
+			<class name="ExamManagement.ExamManagement_SearchFilters" />
+		</classes>
+	</test>
+	
+</suite>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Main Test Suite" parallel="classes" thread-count="3">
+	<test name="Grid IE Smoke Test">    	
+    	<parameter name="browser" value="iexplore"/>
+    <!--<parameter name="url" value="sprinttest-05.mitlab.com"/> --> 
+	<!--<parameter name="url" value="te-fact-03.mitlab.com"/> --> 
+	<!--<parameter name="url" value="te-fact-04.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-05.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-06.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-07.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-08.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-09.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-10.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-03.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-04.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-05.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-06.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-07.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-08.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-09.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-10.mitlab.com"/> -->   	
+        <classes>
+        <class name="SmokeGrid.GridSmokeTestScript"/>
+        </classes>
+    </test>
+    <test name="Grid chrome Smoke Test">        
+ 		<parameter name="browser" value="chrome"/>
+    <!--<parameter name="url" value="sprinttest-05.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-03.mitlab.com"/> --> 
+	<!--<parameter name="url" value="te-fact-04.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-05.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-06.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-07.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-08.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-09.mitlab.com"/> -->
+	<!--<parameter name="url" value="te-fact-10.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-03.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-04.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-05.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-06.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-07.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-08.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-09.mitlab.com"/> -->
+	<!--<parameter name="url" value="sprinttest-10.mitlab.com"/> -->	
+        <classes>
+        <class name="SmokeGrid.GridSmokeTestScript"/>
+        </classes>
+    </test>
+</suite>

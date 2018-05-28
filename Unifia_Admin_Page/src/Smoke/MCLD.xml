@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="MCLD">
+
+<listeners>
+	<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+</listeners>
+
+<test name="LD_SoiledRoom_GWGen">
+    <classes>
+       <class name="LocationDashboard.SoiledArea.LD_SoiledRoom_GWGen" />
+    </classes>
+ </test>
+  
+<test name="LD_SoiledRoom_TJFQ180V">
+    <classes>
+       <class name="LocationDashboard.SoiledArea.LD_SoiledRoom_TJFQ180V" />
+    </classes>
+ </test>
+    
+ </suite>
+

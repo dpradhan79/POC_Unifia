@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="DailyDashboardMultiFacility">
+	<listeners>
+		<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+	</listeners>
+
+	<test name="DashboardDataMulti">
+		<classes>
+			<class name="dailydashboardmultifacility.DashboardDataMulti" />
+		</classes>
+	</test> 
+	
+	<test name="StorageArea">
+		<classes>
+			<class name="dailydashboardmultifacility.StorageAreaMulti" />
+		</classes>
+	</test>
+	
+	<test name="ExamQueue">
+		<classes>
+			<class name="dailydashboardmultifacility.ExamQueueMulti" />
+		</classes>
+	</test>
+	
+	<test name="OutOfFacility">
+		<classes>
+			<class name="dailydashboardmultifacility.OutOfFacilityMulti" />
+		</classes>
+	</test>
+	
+	<test name="ProcedureRoom">
+		<classes>
+			<class name="dailydashboardmultifacility.ProcedureRoomMulit" />
+		</classes>
+	</test>
+	
+	<test name="AwaitingManualCleaning">
+		<classes>
+			<class name="dailydashboardmultifacility.AwaitingManualCleaningMulti" />
+		</classes>
+	</test>
+	
+	<test name="SoiledRoom">
+		<classes>
+			<class name="dailydashboardmultifacility.SoiledRoomMulti" />
+		</classes>
+	</test>
+	
+	<test name="AwaitingReprocessing">
+		<classes>
+			<class name="dailydashboardmultifacility.Awaiting_ReprocessingMulit" />
+		</classes>
+	</test>
+	
+	<test name="ReprocessorsWithoutKE">
+		<classes>
+			<class name="dailydashboardmultifacility.ReprocessorsWithoutKEMulti" />
+		</classes>
+	</test>
+	  
+	<test name="multiFacilityFeatures">
+		<classes>
+			<class name="dailydashboardmultifacility.VerifyMutliFacilityFeatures" />
+		</classes>
+	</test> 
+	
+	<test name="multiFacilityVerify">
+		<classes>
+			<class name="dailydashboardmultifacility.multiFacilityVerify" />
+		</classes>
+	</test> 
+	
+	<test name="MAMTestScript">
+		<classes>
+			<class name="OutOfFacility_MAM.MAMTestScript" />
+		</classes>
+	</test>
+
+
+
+
+</suite>

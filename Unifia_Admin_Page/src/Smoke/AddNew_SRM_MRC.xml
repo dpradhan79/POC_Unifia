@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Add New MRC and SRM workflow">
+
+<listeners>
+	<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+</listeners>
+
+<test name="Add New SRM Workflow">
+    <classes>
+       <class name="addWorkFlow.addWorkFlowfromSRM" />
+    </classes>
+ </test>
+  
+<test name="Add New MRC">
+    <classes>
+       <class name="AdminUserStories.Recon.MRC.AddMRCRecord" />
+    </classes>
+ </test>
+    
+ </suite>
+

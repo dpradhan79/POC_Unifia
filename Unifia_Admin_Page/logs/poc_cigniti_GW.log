@@ -1,0 +1,9 @@
+2018-05-27 21:48:36,309  INFO (main:poc.cigniti.multiscope.procedure.TestMultiScopeProcedure:beforeTest:55) - Browser Opened For scanner - https://sprinttest-03.mitlab.com:9751
+2018-05-27 21:49:14,185  INFO (main:poc.cigniti.multiscope.procedure.TestMultiScopeProcedure:beforeTest:62) - Browser Opened For dashboard - https://sprinttest-03.mitlab.com/DailyDashboard/DailyDashboard
+2018-05-27 21:49:36,042  INFO (main:poc.cigniti.multiscope.procedure.ScannerPage:isScannerResponseValid:57) - Passed - Expected Scanner Message - Room Available Matches With Actual Message - Room Available
+2018-05-27 21:49:36,120  INFO (main:poc.cigniti.multiscope.procedure.ScannerPage:isScannerCountValid:77) - Passed - Expected Scanner Count - 1 Matches With Actual Message - 1
+2018-05-27 21:49:36,319  INFO (main:poc.cigniti.multiscope.procedure.UnifiaPage:isProcedureRoomUpdated:23) - Passed - Expected Status - Available Matches Actual Status - Available
+2018-05-27 21:50:14,977  INFO (main:poc.cigniti.multiscope.procedure.ScannerPage:isScannerResponseValid:60) - Failed - Expected Scanner Message - Hang time Does Not Match With Actual Message - null
+2018-05-27 21:50:45,217  INFO (main:poc.cigniti.multiscope.procedure.ScannerPage:isScannerResponseValid:60) - Failed - Expected Scanner Message - days Does Not Match With Actual Message - null
+2018-05-27 21:50:45,317  INFO (main:poc.cigniti.multiscope.procedure.ScannerPage:isScannerCountValid:77) - Passed - Expected Scanner Count - 2 Matches With Actual Message - 2
+2018-05-27 21:51:24,717  INFO (main:poc.cigniti.multiscope.procedure.UnifiaPage:isProcedureRoomUpdated:27) - Failed - Expected Status - QVLT0001 Does Not Match Actual Status - Available

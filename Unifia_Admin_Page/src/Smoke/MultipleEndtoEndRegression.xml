@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="EndtoEnd_RegressionTest">
+
+	<listeners>
+			<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+	</listeners>
+<!-- ROund 1 -->		
+<test name="HappyPath">
+    <classes>
+       <class name="Regression.HappyPath_CycleMgmt" />
+    </classes>
+  </test>
+      
+ <test name="ExceedHangtime">
+    <classes>
+       <class name="Regression.ExceedingHangTime_CycleMgmt" />
+    </classes>
+ </test>
+  
+<test name="LTFail_OutofFacility">
+    <classes>
+       <class name="Regression.LTFail_OutOFFacility_CycleMgmt" />
+    </classes>
+ </test>
+  
+   <test name="MRCFail_ReprocessTwice">
+    <classes>
+       <class name="Regression.MRCFail_ReprocessTwice_CycleMgmt" />
+    </classes>
+  </test> 
+  
+   <test name="CultureHappyPath">
+    <classes>
+       <class name="Regression.CultureHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="BioburdenHappyPath">
+    <classes>
+       <class name="Regression.BioburdenHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="ProcedureRoom_CycleMgmt">
+    <classes>
+       <class name="Regression.PR3Scopes_CycleMgmt"/>
+    </classes>
+  </test>
+   
+    <test name="MRC_DifferentStaff">
+    <classes>
+       <class name="Regression.MRC_DifferentStaff"/>
+    </classes>
+  </test>
+  
+  <test name="BucketClosure_CycleMgmt">
+    <classes>
+       <class name="Regression.BucketClosure_CycleMgmt"/>
+    </classes>
+  </test>
+
+<!-- ROund 2 -->		
+<test name="HappyPath2">
+    <classes>
+       <class name="Regression.HappyPath_CycleMgmt" />
+    </classes>
+  </test>
+      
+ <test name="ExceedHangtime2">
+    <classes>
+       <class name="Regression.ExceedingHangTime_CycleMgmt" />
+    </classes>
+ </test>
+  
+<test name="LTFail_OutofFacility2">
+    <classes>
+       <class name="Regression.LTFail_OutOFFacility_CycleMgmt" />
+    </classes>
+ </test>
+  
+   <test name="MRCFail_ReprocessTwice2">
+    <classes>
+       <class name="Regression.MRCFail_ReprocessTwice_CycleMgmt" />
+    </classes>
+  </test> 
+  
+   <test name="CultureHappyPath2">
+    <classes>
+       <class name="Regression.CultureHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="BioburdenHappyPath2">
+    <classes>
+       <class name="Regression.BioburdenHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="ProcedureRoom_CycleMgmt2">
+    <classes>
+       <class name="Regression.PR3Scopes_CycleMgmt"/>
+    </classes>
+  </test>
+   
+    <test name="MRC_DifferentStaff2">
+    <classes>
+       <class name="Regression.MRC_DifferentStaff"/>
+    </classes>
+  </test>
+  
+  <test name="BucketClosure_CycleMgmt2">
+    <classes>
+       <class name="Regression.BucketClosure_CycleMgmt"/>
+    </classes>
+  </test>
+
+<!-- ROund 3 -->		
+<test name="HappyPath3">
+    <classes>
+       <class name="Regression.HappyPath_CycleMgmt" />
+    </classes>
+  </test>
+      
+ <test name="ExceedHangtime3">
+    <classes>
+       <class name="Regression.ExceedingHangTime_CycleMgmt" />
+    </classes>
+ </test>
+  
+<test name="LTFail_OutofFacility3">
+    <classes>
+       <class name="Regression.LTFail_OutOFFacility_CycleMgmt" />
+    </classes>
+ </test>
+  
+   <test name="MRCFail_ReprocessTwice3">
+    <classes>
+       <class name="Regression.MRCFail_ReprocessTwice_CycleMgmt" />
+    </classes>
+  </test> 
+  
+   <test name="CultureHappyPath3">
+    <classes>
+       <class name="Regression.CultureHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="BioburdenHappyPath3">
+    <classes>
+       <class name="Regression.BioburdenHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="ProcedureRoom_CycleMgmt3">
+    <classes>
+       <class name="Regression.PR3Scopes_CycleMgmt"/>
+    </classes>
+  </test>
+   
+    <test name="MRC_DifferentStaff3">
+    <classes>
+       <class name="Regression.MRC_DifferentStaff"/>
+    </classes>
+  </test>
+  
+  <test name="BucketClosure_CycleMgmt3">
+    <classes>
+       <class name="Regression.BucketClosure_CycleMgmt"/>
+    </classes>
+  </test>
+
+<!-- ROund 4 -->		
+<test name="HappyPath4">
+    <classes>
+       <class name="Regression.HappyPath_CycleMgmt" />
+    </classes>
+  </test>
+      
+ <test name="ExceedHangtime4">
+    <classes>
+       <class name="Regression.ExceedingHangTime_CycleMgmt" />
+    </classes>
+ </test>
+  
+<test name="LTFail_OutofFacility4">
+    <classes>
+       <class name="Regression.LTFail_OutOFFacility_CycleMgmt" />
+    </classes>
+ </test>
+  
+   <test name="MRCFail_ReprocessTwice4">
+    <classes>
+       <class name="Regression.MRCFail_ReprocessTwice_CycleMgmt" />
+    </classes>
+  </test> 
+  
+   <test name="CultureHappyPath4">
+    <classes>
+       <class name="Regression.CultureHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="BioburdenHappyPath4">
+    <classes>
+       <class name="Regression.BioburdenHappyPath_CycleMgmt" />
+    </classes>
+  </test>
+  
+  <test name="ProcedureRoom_CycleMgmt4">
+    <classes>
+       <class name="Regression.PR3Scopes_CycleMgmt"/>
+    </classes>
+  </test>
+   
+    <test name="MRC_DifferentStaff4">
+    <classes>
+       <class name="Regression.MRC_DifferentStaff"/>
+    </classes>
+  </test>
+  
+  <test name="BucketClosure_CycleMgmt4">
+    <classes>
+       <class name="Regression.BucketClosure_CycleMgmt"/>
+    </classes>
+  </test>
+
+
+   </suite>
+
+

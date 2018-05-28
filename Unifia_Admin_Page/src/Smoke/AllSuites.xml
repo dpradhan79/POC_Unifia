@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AllSuites">
+		<listeners>
+				<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+		</listeners>
+	<suite-files>
+	<!--  Part 1 -->
+		<suite-file path="DailyDashboard.xml" />
+		<suite-file path="src\InfectionPrevention\InfectionPrevention.xml"/>
+		<suite-file path="src\Regression\EndtoEnd_RegressionTest.xml" />
+	<!--  Part 2 -->
+		<suite-file path="AllAdminRecon_Scenarios.xml" />
+		<suite-file path="src\StoredScans\StoredScan_RegressionTest.xml"/>
+		<suite-file path="src\ExamManagement\ExamManagement.xml" />
+		<suite-file path="AddNew_SRM_MRC.xml"/> 
+	<!--  Part 3 -->
+		
+		<suite-file path="src\Regression\AllRoom_Regression.xml" /> 
+		<suite-file path="src\Regression\KE_EndtoEnd_RegressionTest.xml" />
+		<suite-file path="DailyDashboardMultiFacility.xml" />  
+	  
+		
+		
+	</suite-files>
+
+</suite>

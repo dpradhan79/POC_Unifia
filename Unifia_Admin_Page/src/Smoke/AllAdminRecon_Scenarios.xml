@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="All Admin Recon Scripts">
+
+<listeners>
+	<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+</listeners>
+
+<test name="AdminTestData">
+    <classes>
+    
+       <class name="AdminUserStories.AdminTestData" />
+    </classes>
+ </test>
+  
+<test name="Users">
+    <classes>
+       <class name="AdminUserStories.User.UserDetailsGWGen" />
+    </classes>
+ </test>
+  
+<test name="Scopes">
+    <classes>
+       <class name="AdminUserStories.Scopes.ScopeDetailsGWGen" />
+    </classes>
+ </test>
+  
+   <test name="Scanner">
+    <classes>
+       <class name="AdminUserStories.Scanner.ScannerDetailsGWGen" />
+    </classes>
+  </test>
+  
+   <test name="AssignBarCode">
+    <classes>
+       <class name="AdminUserStories.AssignBarCode.AssignBarcodeDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="ScopeSafety">
+    <classes>
+       <class name="AdminUserStories.ScopeSafety.ScopeSafetyDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="AccessPoint">
+    <classes>
+       <class name="AdminUserStories.AccessPoint.AccessPointDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="ScopeType">
+    <classes>
+       <class name="AdminUserStories.ScopeType.ScopeTypeDetails_GWGen" />
+    </classes>
+  </test>
+  
+  <test name="Staff Details">
+    <classes>
+       <class name="AdminUserStories.Staff.StaffDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="Exam Type">
+    <classes>
+       <class name="AdminUserStories.ExamType.ExamTypeDetailsGWGen" />
+    </classes>
+  </test>
+  
+  <test name="Facility">
+    <classes>
+       <class name="AdminUserStories.Facility.FacilityGWGen" />
+    </classes>
+  </test>
+  
+  <test name="Location">
+    <classes>
+       <class name="AdminUserStories.Location.LocationDetailGWGen" />
+    </classes>
+  </test>
+   <test name="Location_ReprocessorHappyPath">
+    <classes>
+       <class name="AdminUserStories.Location.LocationDetail_ReprocessingHappyPath_GWGen" />
+    </classes>
+  </test>
+  <test name="ComplexAdmin">
+    <classes>
+       <class name="AdminUserStories.ComplexAdminTesting" />
+    </classes>
+  </test>
+  <test name="ReconBioburden">
+    <classes>
+       <class name="AdminUserStories.Recon.BioburdenTesting.ReconBioburdenRoom_GWGen" />
+    </classes>
+  </test>
+  <test name="ReconProcedureRoom">
+    <classes>
+       <class name="AdminUserStories.Recon.ProcedureRoom.ProcedureRoom_GWGen" />
+    </classes>
+  </test>
+  <test name="ReconReprocessingRoom">
+    <classes>
+       <class name="AdminUserStories.Recon.Reprocessing.ReconReprocessingRoom_GWGen" />
+    </classes>
+  </test>
+  <test name="ReconSoiled">
+    <classes>
+       <class name="AdminUserStories.Recon.Soiled.SoiledAreaGWGen" />
+    </classes>
+  </test>
+    <test name="ReconMRC">
+    <classes>
+       <class name="AdminUserStories.Recon.MRC.MRC_GWGen" />
+    </classes>
+  </test>
+ <test name="ReconComplex">
+    <classes>
+       <class name="AdminUserStories.Recon.ComplexReconTest" />
+    </classes>
+  </test>
+  
+ </suite>
+

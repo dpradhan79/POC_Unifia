@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="InfectionPrevention">
+	<listeners>
+		<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+	</listeners>
+
+	<test name="OOFDashboard_MAM">
+		<classes>
+			<class name="OutOfFacility_MAM.OutOfFacility_MAM" />
+		</classes>
+	</test>
+	
+	<test name="IPDashboardData">
+		<classes>
+			<class name="InfectionPrevention.IPDashboardData" />
+		</classes>
+	</test>
+	
+	<test name="ScopesApproachingHT">
+		<classes>
+			<class name="InfectionPrevention.ScopesApproachingHT" />
+		</classes>
+	</test>
+	
+	<test name="ScopesAwaitingMCorReprocessing">
+		<classes>
+			<class name="InfectionPrevention.ScopesAwaitingMCorReprocessing" />
+		</classes>
+	</test>
+	
+	<test name="ScopesExceedingHT">
+		<classes>
+			<class name="InfectionPrevention.ScopesExceedingHT" />
+		</classes>
+	</test>
+	
+	<test name="ScopesReprocessedToday">
+		<classes>
+			<class name="InfectionPrevention.ScopesReprocessedToday" />
+		</classes>
+	</test>
+	
+
+	
+	OutOfFacility_MAM
+	
+	
+</suite>

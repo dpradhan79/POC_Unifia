@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="StoredScan_RegressionTest">
+
+	<listeners>
+		<listener class-name="TestFrameWork.Reports.MyReporterListener"></listener>
+	</listeners>
+
+	<test name="InitializeStoredScans">
+		<classes>
+			<class name="StoredScans.InitializeStoredScans" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_Bioburden">
+		<classes>
+			<class name="StoredScans.StoredScans_Bioburden" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_ReprocessingRoom">
+		<classes>
+			<class name="StoredScans.StoredScans_ReprocessingRoom" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_StorageArea">
+		<classes>
+			<class name="StoredScans.StoredScans_StorageArea" />
+		</classes>
+	</test>
+	
+	<test name="StoredScans_ProcedureRoom">
+		<classes>
+			<class name="StoredScans.StoredScans_ProcedureRoom" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_CultureResult">
+		<classes>
+			<class name="StoredScans.StoredScans_CultureResult" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_StoredScans_SoliedArea">
+		<classes>
+			<class name="StoredScans.StoredScans_SoliedArea" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_ProcRoom_PatientBuckClose">
+		<classes>
+			<class name="StoredScans.StoredScans_ProcRoom_PatientBuckClose" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_SwitchProcRooms">
+		<classes>
+			<class name="StoredScans.StoredScans_SwitchProcRooms" />
+		</classes>
+	</test>
+
+	<test name="StoredScans_PR3Scopes">
+		<classes>
+			<class name="StoredScans.StoredScans_PR3Scopes" />
+		</classes>
+	</test>
+	
+	<test name="StoredScans_ReprocessingRoom_KE">
+		<classes>
+			<class name="StoredScans.StoredScans_ReprocessingRoom_KE" />
+		</classes>
+	</test>
+	
+	<test name="StoredScans_ProcRoom_NewCycleMgt">
+		<classes>
+			<class name="StoredScans.StoredScans_ProcRoom_NewCycleMgmt" />
+		</classes>
+	</test>
+	
+	<test name="StoredScans_ProcRoom_Missed_NewCycleMgt">
+		<classes>
+			<class name="StoredScans.ProcedureRoom_Missed_NewCycleMgmt" />
+		</classes>
+	</test>
+	
+	<test name="StoredScans_ReprocessingRoom_NewCycleMgmt">
+		<classes>
+			<class name="StoredScans.StoredScans_ReprocessingArea_NewCycleMgmt" />
+		</classes>
+	</test>	
+	
+	<test name="StoredScans_Repeat_ReprocessingArea_NewCycleMgmt">
+		<classes>
+			<class name="StoredScans.StoredScans_Repeat_ReprocessingArea_NewCycleMgmt" />
+		</classes>
+	</test>
+	
+	<test name="StoredScans_SoiledArea_NewCycleMgmt">
+		<classes>
+			<class name="StoredScans.StoredScans_SoiledArea_NewCycleMgmt" />
+		</classes>
+	</test>
+	
+</suite>
+
