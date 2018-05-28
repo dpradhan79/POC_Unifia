@@ -57,7 +57,6 @@ public class ScannerPage {
 			LOG.info(String.format("Failed - Expected Scanner Message - %s Does Not Match With Actual Message - %s",
 					expectedMsg, actualMsg));
 		}
-
 		return status;
 
 	}
