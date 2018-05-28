@@ -63,5 +63,7 @@ public class GenericUtil {
 		});		
 		return status;
 	}
+	
+	public void foobar() {}
 
 }
