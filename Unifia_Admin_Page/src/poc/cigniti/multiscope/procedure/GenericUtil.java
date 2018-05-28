@@ -20,11 +20,11 @@ public class GenericUtil {
 		
 	}
 	
-	public static void waitUntilExpectedMessageAppears(WebDriver webDriver, final By byObject, final String expectedMessage, int timeOutInSecs)
+	public static Boolean waitUntilExpectedMessageAppears(WebDriver webDriver, final By byObject, final String expectedMessage, int timeOutInSecs)
 	{
 		WebDriverWait wait = new WebDriverWait(webDriver, timeOutInSecs);
 		
-		wait.until(new ExpectedCondition<Boolean>() {
+		Boolean status = wait.until(new ExpectedCondition<Boolean>() {
 			@Override
 			public Boolean apply(WebDriver webDriver) {				
 				WebElement webElement = webDriver.findElement(byObject);
@@ -32,7 +32,8 @@ public class GenericUtil {
 				actualMsg = actualMsg.trim().replaceAll("\\s+"," ");
 				return actualMsg.contains(expectedMessage);
 			}
-		});		
+		});	
+		return status;
 	}
 	
 	public static Boolean waitUntilExpectedAttributeAppears(WebDriver webDriver, final By byObject, final String attribute, final String expectedAttributeValue, int timeOutInSecs)
