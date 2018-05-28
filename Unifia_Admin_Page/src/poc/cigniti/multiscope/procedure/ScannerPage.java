@@ -49,7 +49,10 @@ public class ScannerPage {
 		String actualMsg = null;
 		try {
 			GenericUtil.waitUntilExpectedAttributeAppears(this.driverScanner, By.xpath(xpathScanMsg), "value",
-					expectedMsg, ITestConstants.implicitTimeOut);			
+					expectedMsg, ITestConstants.implicitTimeOut);
+			WebElement webElement = driverScanner.findElement(By.xpath(xpathScanMsg));
+			actualMsg = webElement.getAttribute("value");
+			actualMsg = actualMsg.trim().replaceAll("\\s+", " ");
 			status = true;
 			LOG.info(String.format("Passed - Expected Scanner Message - %s Matches With Actual Message - %s",
 					expectedMsg, actualMsg));			
