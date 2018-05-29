@@ -35,6 +35,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 			LOG.error(ex.getMessage());
 			ex.printStackTrace();
 		}
+		
 	}
 
 	@Edge
