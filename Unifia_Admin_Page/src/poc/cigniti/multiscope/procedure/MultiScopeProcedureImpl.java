@@ -76,17 +76,17 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	
 	@Edge
 	public void e_scanProcedureStart() {
-		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
+		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Procedure Start");
 	}
 	
 	@Edge
 	public void e_scanProcedureEnd() {
-		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
+		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Procedure End");
 	}
 	
 	@Edge
 	public void e_scanRoomNeedsCleaning() {
-		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
+		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Needs Cleaning");
 	}
 
 	@Vertex
@@ -110,6 +110,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerCountValid(2);
 
 		// Dashboard Validation
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
 		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001"});
 
 		// TODO - DB Validation
@@ -123,8 +124,6 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(3);
 		
-		//TODO - Dashboard Validation
-		
 		// TODO - DB Validation
 		
 	}
@@ -137,6 +136,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerCountValid(4);
 
 		// Dashboard Validation
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
 		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001", "QVLT0002"});
 
 		// TODO - DB Validation
@@ -149,8 +149,6 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Staff");
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(5);
-		
-		//TODO - Dashboard Validation
 		
 		// TODO - DB Validation
 		
@@ -166,6 +164,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
+		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001", "QVLT0002"});
 		
 		// TODO - DB Validation
 		
@@ -179,8 +178,6 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(7);
 		
-		// Dashboard Validation
-		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
 		
 		// TODO - DB Validation
 		
@@ -189,9 +186,13 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Vertex
 	public void v_ProcedureStart() {
 		
-		//TODO - Scanner Validation
+		//Scanner Validation
+		this.scannerPage.isScannerResponseValid("Procedure Started");
+		this.scannerPage.isScannerCountValid(8);
 		
-		//TODO - Dashboard Validation
+		//Dashboard Validation
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
+		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001", "QVLT0002"});
 		
 		// TODO - DB Validation
 		
@@ -200,9 +201,9 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Vertex
 	public void v_ProcedureEnd() {
 		
-		//TODO - Scanner Validation
-		
-		//TODO - Dashboard Validation
+		//Scanner Validation
+		this.scannerPage.isScannerResponseValid("Procedure Completed");
+		this.scannerPage.isScannerCountValid(9);
 		
 		// TODO - DB Validation
 		
@@ -213,9 +214,12 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		//TODO - Scanner Validation
 		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
-		this.scannerPage.isScannerCountValid(7);
+		this.scannerPage.isScannerCountValid(10);
 		
-		//TODO - Dashboard Validation
+		//Dashboard Validation
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
+		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0002"});
+		
 		
 		//TODO - DB Validation
 		
@@ -227,9 +231,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Staff");
 		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(8);
-		
-		//TODO - Dashboard Validation
+		this.scannerPage.isScannerCountValid(11);
 		
 		//TODO - DB Validation
 		
@@ -240,9 +242,10 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
-		this.scannerPage.isScannerCountValid(9);
+		this.scannerPage.isScannerCountValid(12);
 		
-		//TODO - Dashboard Validation
+		//Dashboard Validation
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
 		
 		//TODO - DB Validation
 		
@@ -254,9 +257,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Staff");
 		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(10);
-		
-		//TODO - Dashboard Validation
+		this.scannerPage.isScannerCountValid(13);
 		
 		//TODO - DB Validation
 		
@@ -265,9 +266,9 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Vertex
 	public void v_RoomNeedsCleaning() {
 		
-		//TODO - Scanner Validation
-		
-		//TODO - Dashboard Validation
+		//Scanner Validation
+		this.scannerPage.isScannerResponseValid("Room Needs Cleaning");
+		this.scannerPage.isScannerCountValid(14);
 		
 		//TODO - DB Validation
 		
