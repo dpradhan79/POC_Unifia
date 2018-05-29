@@ -40,38 +40,38 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Edge
 	public void e_scanRoomAvailable() {
 
-		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", "Available");
+		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Available");
 
 	}
 
 	@Edge
 	public void e_scanScope1() {
-		this.scannerPage.scanItem("Procedure Room 1", "Scope", "QVLT0001");
+		this.scannerPage.scanItem("Procedure Room 1", "Scope", null, "QVLT0001");
 	}
 
 	@Edge
 	public void e_scanStaff1() {
-		this.scannerPage.scanItem("Procedure Room 1", "Staff", "F1_FN_001 F1_LN_001(F1001)");
+		this.scannerPage.scanItem("Procedure Room 1", "Staff", null, "F1_FN_001 F1_LN_001(F1001)");
 	}
 	
 	@Edge
 	public void e_scanScope2() {
-		this.scannerPage.scanItem("Procedure Room 1", "Scope", "QVLT0002");
+		this.scannerPage.scanItem("Procedure Room 1", "Scope", null, "QVLT0002");
 	}
 	
 	@Edge
 	public void e_scanStaff2() {
-		this.scannerPage.scanItem("Procedure Room 1", "Staff", "F1_FN_002 F1_LN_002(F1002)");
+		this.scannerPage.scanItem("Procedure Room 1", "Staff", null, "F1_FN_002 F1_LN_002(F1002)");
 	}
 	
 	@Edge
 	public void e_scanPatient() {
-		this.scannerPage.scanItem("Procedure Room 1", "Patient", "F1X000001");
+		this.scannerPage.scanItem("Procedure Room 1", "Patient", null, "F1X000001");
 	}
 	
 	@Edge
 	public void e_scanPhysician() {
-		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
+		this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
 	}
 	
 	@Edge

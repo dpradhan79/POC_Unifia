@@ -20,7 +20,7 @@ public class ScannerPage {
 		this.wait = new WebDriverWait(this.driverScanner, ITestConstants.implicitTimeOut);
 	}
 
-	public void scanItem(String location, String scanType, String scanItem) {
+	public void scanItem(String location, String scanType, String scanSubType, String scanItem) {
 		// Location
 		GenericUtil.waitUntilListPopulates(this.driverScanner, By.id("UID_DropDownLocations"), ITestConstants.implicitTimeOut);
 		Select scannerLocation = new Select(this.driverScanner.findElement(By.id("UID_DropDownLocations")));		
@@ -33,7 +33,15 @@ public class ScannerPage {
 		GenericUtil.waitUntilListPopulates(this.driverScanner, By.id("UID_DropDownScanType"), ITestConstants.implicitTimeOut);
 		Select scannerScanType = new Select(this.driverScanner.findElement(By.id("UID_DropDownScanType")));
 		scannerScanType.selectByVisibleText(scanType);
-
+		
+		//scansubtype
+		if(scanSubType != null)
+		{					
+			GenericUtil.waitUntilListPopulates(this.driverScanner, By.id("UID_DropDownScanSubType"), ITestConstants.implicitTimeOut);
+			Select scannerScanSubType = new Select(this.driverScanner.findElement(By.id("UID_DropDownScanSubType")));
+			scannerScanSubType.selectByVisibleText(scanSubType);
+			
+		}
 		// ScanItem
 		GenericUtil.waitUntilListPopulates(this.driverScanner, By.id("UID_DropDownScanItem"), ITestConstants.implicitTimeOut);
 		Select scannerScanItem = new Select(this.driverScanner.findElement(By.id("UID_DropDownScanItem")));
