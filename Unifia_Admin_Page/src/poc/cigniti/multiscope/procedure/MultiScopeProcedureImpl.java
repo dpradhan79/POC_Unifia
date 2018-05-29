@@ -25,7 +25,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.driverUnifia = driverUnifia;
 		this.scannerPage = new ScannerPage(this.driverScanner);
 		this.unifiaPage = new UnifiaPage(this.driverUnifia);
-		/*DB Intialization */
+		/*DB Initialization */
 		String DBConnection = "jdbc:sqlserver://SPRINTTEST-03.mitlab.com\\UESQLSVR;databaseName=Unifia";
 		String userName = "Unifia";
 		String password = "Olympu$123";
@@ -123,6 +123,8 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(3);
 		
+		//TODO - Dashboard Validation
+		
 		// TODO - DB Validation
 		
 	}
@@ -147,6 +149,8 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Staff");
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(5);
+		
+		//TODO - Dashboard Validation
 		
 		// TODO - DB Validation
 		
@@ -185,9 +189,9 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Vertex
 	public void v_ProcedureStart() {
 		
-		// Scanner Validation
+		//TODO - Scanner Validation
 		
-		// Dashboard Validation
+		//TODO - Dashboard Validation
 		
 		// TODO - DB Validation
 		
@@ -196,9 +200,9 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Vertex
 	public void v_ProcedureEnd() {
 		
-		// Scanner Validation
+		//TODO - Scanner Validation
 		
-		// Dashboard Validation
+		//TODO - Dashboard Validation
 		
 		// TODO - DB Validation
 		
@@ -207,13 +211,13 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Vertex
 	public void v_Scope1_PreClean() {
 		
-		// Scanner Validation
+		//TODO - Scanner Validation
 		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
 		this.scannerPage.isScannerCountValid(7);
 		
-		// Dashboard Validation
+		//TODO - Dashboard Validation
 		
-		// TODO - DB Validation
+		//TODO - DB Validation
 		
 	}
 	
@@ -225,9 +229,9 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(8);
 		
-		// Dashboard Validation
+		//TODO - Dashboard Validation
 		
-		// TODO - DB Validation
+		//TODO - DB Validation
 		
 	}
 	
@@ -238,9 +242,9 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
 		this.scannerPage.isScannerCountValid(9);
 		
-		// Dashboard Validation
+		//TODO - Dashboard Validation
 		
-		// TODO - DB Validation
+		//TODO - DB Validation
 		
 	}
 	
@@ -252,20 +256,20 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(10);
 		
-		// Dashboard Validation
+		//TODO - Dashboard Validation
 		
-		// TODO - DB Validation
+		//TODO - DB Validation
 		
 	}
 	
 	@Vertex
 	public void v_RoomNeedsCleaning() {
 		
-		// Scanner Validation
+		//TODO - Scanner Validation
 		
-		// Dashboard Validation
+		//TODO - Dashboard Validation
 		
-		// TODO - DB Validation
+		//TODO - DB Validation
 		
 	}
 }

@@ -19,11 +19,12 @@ public class UnifiaPage {
 	public boolean isProcedureRoomStatusUpdated(String procedureRoom, String expectedStatus) {
 		boolean status = false;
 		String xpathProcedureRoomStatus = String
-				.format("//span[text() = '%s']/parent::div/following-sibling::div[1]", procedureRoom);
-		String actualStatus = this.driverUnifia.findElement(By.xpath(xpathProcedureRoomStatus)).getText();
+				.format("//span[text() = '%s']/parent::div/following-sibling::div[1]", procedureRoom);	
+		String actualStatus = null;
 		try {
 			GenericUtil.waitUntilExpectedMessageAppears(this.driverUnifia, By.xpath(xpathProcedureRoomStatus),
 					expectedStatus, ITestConstants.implicitTimeOut);
+			actualStatus = this.driverUnifia.findElement(By.xpath(xpathProcedureRoomStatus)).getText();
 			LOG.info(String.format("%s - Expected Status - %s Matches Actual Status - %s", "Passed", expectedStatus,
 					actualStatus));
 			status = true;
