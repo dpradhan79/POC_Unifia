@@ -73,6 +73,21 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	public void e_scanPhysician() {
 		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
 	}
+	
+	@Edge
+	public void e_scanProcedureStart() {
+		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
+	}
+	
+	@Edge
+	public void e_scanProcedureEnd() {
+		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
+	}
+	
+	@Edge
+	public void e_scanRoomNeedsCleaning() {
+		//this.scannerPage.scanItem("Procedure Room 1", "Staff", "Physician", "F1_DR_001 F1_PHYS_001(F1Dr001)");
+	}
 
 	@Vertex
 	public void v_RoomAvailable() {
@@ -162,6 +177,93 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
+		
+		// TODO - DB Validation
+		
+	}
+	
+	@Vertex
+	public void v_ProcedureStart() {
+		
+		// Scanner Validation
+		
+		// Dashboard Validation
+		
+		// TODO - DB Validation
+		
+	}
+	
+	@Vertex
+	public void v_ProcedureEnd() {
+		
+		// Scanner Validation
+		
+		// Dashboard Validation
+		
+		// TODO - DB Validation
+		
+	}
+	
+	@Vertex
+	public void v_Scope1_PreClean() {
+		
+		// Scanner Validation
+		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
+		this.scannerPage.isScannerCountValid(7);
+		
+		// Dashboard Validation
+		
+		// TODO - DB Validation
+		
+	}
+	
+	@Vertex
+	public void v_Staff1_PreClean() {
+		
+		// Scanner Validation
+		this.scannerPage.isScannerResponseValid("Staff");
+		this.scannerPage.isScannerResponseValid("Scanned");
+		this.scannerPage.isScannerCountValid(8);
+		
+		// Dashboard Validation
+		
+		// TODO - DB Validation
+		
+	}
+	
+	@Vertex
+	public void v_Scope2_PreClean() {
+		
+		// Scanner Validation
+		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
+		this.scannerPage.isScannerCountValid(9);
+		
+		// Dashboard Validation
+		
+		// TODO - DB Validation
+		
+	}
+	
+	@Vertex
+	public void v_Staff2_PreClean() {
+		
+		// Scanner Validation
+		this.scannerPage.isScannerResponseValid("Staff");
+		this.scannerPage.isScannerResponseValid("Scanned");
+		this.scannerPage.isScannerCountValid(10);
+		
+		// Dashboard Validation
+		
+		// TODO - DB Validation
+		
+	}
+	
+	@Vertex
+	public void v_RoomNeedsCleaning() {
+		
+		// Scanner Validation
+		
+		// Dashboard Validation
 		
 		// TODO - DB Validation
 		

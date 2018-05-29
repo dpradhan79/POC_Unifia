@@ -81,7 +81,7 @@ public class TestMultiScopeProcedure {
 	@Test
 	public void validateMultiScopeProcedure() {
 		
-		String fileMultipScopeProcedure = "src/yED_graphs/poc_cigniti_multiscopeprocedure.graphml";
+		String fileMultipScopeProcedure = "src/yED_graphs/poc_cigniti.graphml";
 		Result result = new TestBuilder().addModel(fileMultipScopeProcedure,
 				new MultiScopeProcedureImpl(this.driverScanner, this.driverUnifia).setPathGenerator(new RandomPath((StopCondition) new EdgeCoverage(100))))
 				.execute();
