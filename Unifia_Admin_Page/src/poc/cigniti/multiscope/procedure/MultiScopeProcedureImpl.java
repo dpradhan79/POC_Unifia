@@ -1,5 +1,7 @@
 package poc.cigniti.multiscope.procedure;
 
+import java.sql.SQLException;
+
 import org.apache.log4j.Logger;
 import org.graphwalker.core.machine.ExecutionContext;
 import org.graphwalker.java.annotation.Edge;
@@ -8,10 +10,12 @@ import org.openqa.selenium.WebDriver;
 
 public class MultiScopeProcedureImpl extends ExecutionContext {
 	private static final Logger LOG = Logger.getLogger(MultiScopeProcedureImpl.class);
-	WebDriver driverScanner = null;
-	WebDriver driverUnifia = null;
-	ScannerPage scannerPage = null;
-	UnifiaPage unifiaPage = null;
+	private WebDriver driverScanner = null;
+	private WebDriver driverUnifia = null;
+	private ScannerPage scannerPage = null;
+	private UnifiaPage unifiaPage = null;
+	private DBVerification dbVerification = null;
+	
 
 	public MultiScopeProcedureImpl() {
 	}
@@ -21,7 +25,16 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.driverUnifia = driverUnifia;
 		this.scannerPage = new ScannerPage(this.driverScanner);
 		this.unifiaPage = new UnifiaPage(this.driverUnifia);
-
+		/*DB Intialization */
+		String DBConnection = "jdbc:sqlserver://SPRINTTEST-03.mitlab.com\\UESQLSVR;databaseName=Unifia";
+		String userName = "Unifia";
+		String password = "Olympu$123";
+		try {
+			this.dbVerification = new DBVerification(DBConnection, userName, password);
+		} catch (SQLException ex) {	
+			LOG.error(ex.getMessage());
+			ex.printStackTrace();
+		}
 	}
 
 	@Edge
@@ -68,7 +81,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerCountValid(1);
 
 		// Dashboard Validation
-		this.unifiaPage.isProcedureRoomUpdated("Procedure Room 1", "Available");
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
 
 		// TODO - DB Validation
 
@@ -82,7 +95,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerCountValid(2);
 
 		// Dashboard Validation
-		this.unifiaPage.isProcedureRoomUpdated("Procedure Room 1", "QVLT0001");
+		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001"});
 
 		// TODO - DB Validation
 	}
@@ -107,7 +120,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerCountValid(4);
 
 		// Dashboard Validation
-		this.unifiaPage.isProcedureRoomUpdated("Procedure Room 1", "QVLT0002");
+		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001", "QVLT0002"});
 
 		// TODO - DB Validation
 	}
@@ -133,7 +146,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerCountValid(6);
 		
 		// Dashboard Validation
-		this.unifiaPage.isProcedureRoomUpdated("Procedure Room 1", "In Use");
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
 		
 		// TODO - DB Validation
 		
@@ -148,7 +161,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerCountValid(7);
 		
 		// Dashboard Validation
-		this.unifiaPage.isProcedureRoomUpdated("Procedure Room 1", "In Use");
+		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
 		
 		// TODO - DB Validation
 		
