@@ -1,6 +1,10 @@
 package poc.cigniti.multiscope.procedure;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.graphwalker.core.machine.ExecutionContext;
@@ -99,8 +103,22 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		// Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
 
-		// TODO - DB Validation
-
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSQLForWorkFlowValidation, "Procedure Room 1", "Workflow Event", "10");
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || !mapDB.get("LocationStateID_FK").contains("10"))
+			{
+				LOG.info(String.format("%s, The Workflow Event Was Not Found With Required State", "Failed"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Vertex
@@ -114,7 +132,23 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
 		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001"});
 
-		// TODO - DB Validation
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSQLForScopeAndStaffValidation, "Procedure Room 1", "Scope", "3");
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || !mapDB.get("CycleEventID_FK").contains("3"))
+			{
+				LOG.info(String.format("%s, The Scope Was Not Found Associated", "Failed"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Vertex
@@ -125,8 +159,23 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(3);
 		
-		// TODO - DB Validation
-		
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSQLForScopeAndStaffValidation, "Procedure Room 1", "Staff", "38");
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || !mapDB.get("CycleEventID_FK").contains("38"))
+			{
+				LOG.info(String.format("%s, The Scope Was Not Found Associated", "Failed"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Vertex
@@ -140,7 +189,23 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
 		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001", "QVLT0002"});
 
-		// TODO - DB Validation
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSQLForScopeAndStaffValidation, "Procedure Room 1", "Scope", "3");
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || !mapDB.get("CycleEventID_FK").contains("3"))
+			{
+				LOG.info(String.format("%s, The Scope Was Not Found Associated", "Failed"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Vertex
@@ -151,7 +216,23 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		this.scannerPage.isScannerResponseValid("Scanned");
 		this.scannerPage.isScannerCountValid(5);
 		
-		// TODO - DB Validation
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSQLForScopeAndStaffValidation, "Procedure Room 1", "Staff", "38");
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || !mapDB.get("CycleEventID_FK").contains("38"))
+			{
+				LOG.info(String.format("%s, The Scope Was Not Found Associated", "Failed"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

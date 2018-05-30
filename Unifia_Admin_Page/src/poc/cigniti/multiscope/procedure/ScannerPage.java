@@ -65,6 +65,9 @@ public class ScannerPage {
 			LOG.info(String.format("Passed - Expected Scanner Message - %s Matches With Actual Message - %s",
 					expectedMsg, actualMsg));			
 		} catch (WebDriverException ex) {
+			WebElement webElement = driverScanner.findElement(By.xpath(xpathScanMsg));
+			actualMsg = webElement.getAttribute("value");
+			actualMsg = actualMsg.trim().replaceAll("\\s+", " ");
 			LOG.info(String.format("Failed - Expected Scanner Message - %s Does Not Match With Actual Message - %s",
 					expectedMsg, actualMsg));
 		}
