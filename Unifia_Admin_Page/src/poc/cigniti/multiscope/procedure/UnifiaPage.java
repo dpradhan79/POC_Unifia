@@ -29,6 +29,9 @@ public class UnifiaPage {
 					actualStatus));
 			status = true;
 		} catch (Exception ex) {
+			actualStatus = this.driverUnifia.findElement(By.xpath(xpathProcedureRoomStatus)).getText();
+			LOG.info(String.format("%s - Expected Status - %s Matches Actual Status - %s", "Passed", expectedStatus,
+					actualStatus));
 			LOG.info(String.format("%s - Expected Status - %s Does Not Match Actual Status - %s", "Failed",
 					expectedStatus, actualStatus));
 		}
