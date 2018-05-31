@@ -19,7 +19,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	private ScannerPage scannerPage = null;
 	private UnifiaPage unifiaPage = null;
 	private DBVerification dbVerification = null;
-	
+	private String utcExecutionTime = null;
 
 	public MultiScopeProcedureImpl() {
 	}
@@ -32,9 +32,10 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		/*DB Initialization */
 		String DBConnection = "jdbc:sqlserver://SPRINTTEST-03.mitlab.com\\UESQLSVR;databaseName=Unifia";
 		String userName = "Unifia";
-		String password = "Olympu$123";
+		String password = "Olympu$123";		
 		try {
-			this.dbVerification = new DBVerification(DBConnection, userName, password);
+			this.dbVerification = new DBVerification(DBConnection, userName, password);			
+			this.utcExecutionTime = this.dbVerification.getColumnValues("select GETUTCDATE() as CurExecTime", "CurExecTime").get(0);
 		} catch (SQLException ex) {	
 			LOG.error(ex.getMessage());
 			ex.printStackTrace();
@@ -43,8 +44,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	}
 
 	@Edge
-	public void e_scanRoomAvailable() {
-
+	public void e_scanRoomAvailable() {	
 		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Available");
 
 	}
@@ -97,8 +97,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	@Vertex
 	public void v_RoomAvailable() {
 		// Scanner Validation
-		this.scannerPage.isScannerResponseValid("Room Available");
-		this.scannerPage.isScannerCountValid(1);
+		this.scannerPage.isScannerResponseValid("Room Available");		
 
 		// Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
@@ -125,8 +124,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	public void v_Scope1() {
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Hang time");
-		this.scannerPage.isScannerResponseValid("days");
-		this.scannerPage.isScannerCountValid(2);
+		this.scannerPage.isScannerResponseValid("days");		
 
 		// Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
@@ -156,8 +154,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Staff");
-		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(3);
+		this.scannerPage.isScannerResponseValid("Scanned");		
 		
 		// DB Validation
 		String strSql = String.format(ITestConstants.strSQLForScopeAndStaffValidation, "Procedure Room 1", "Staff", "38");
@@ -182,8 +179,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	public void v_Scope2() {
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Hang time");
-		this.scannerPage.isScannerResponseValid("days");
-		this.scannerPage.isScannerCountValid(4);
+		this.scannerPage.isScannerResponseValid("days");		
 
 		// Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "Available");
@@ -213,8 +209,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Staff");
-		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(5);
+		this.scannerPage.isScannerResponseValid("Scanned");		
 		
 		// DB Validation
 		String strSql = String.format(ITestConstants.strSQLForScopeAndStaffValidation, "Procedure Room 1", "Staff", "38");
@@ -241,15 +236,33 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Patient");
-		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(6);
+		this.scannerPage.isScannerResponseValid("Scanned");		
 		
 		// Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
 		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001", "QVLT0002"});
 		
-		// TODO - DB Validation
-		
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSqlForMultipleRowsCreatedInItemHistoryWithCycleEventUpdated, "4", this.utcExecutionTime);
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || (mapDB.get("CycleEventID_FK").size() < 3))
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found < 3", "Failed", mapDB.get("CycleEventID_FK").size()));
+			}
+			else
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found Linked To Association ", "Passed", mapDB.get("CycleEventID_FK").size()));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Vertex
@@ -257,11 +270,29 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Physician");
-		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(7);
+		this.scannerPage.isScannerResponseValid("Scanned");			
 		
-		
-		// TODO - DB Validation
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSqlForMultipleRowsCreatedInItemHistoryWithCycleEventUpdated, "5", this.utcExecutionTime);
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || (mapDB.get("CycleEventID_FK").size() < 3))
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found < 3", "Failed", mapDB.get("CycleEventID_FK").size()));
+			}
+			else
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found Linked To Association ", "Passed", mapDB.get("CycleEventID_FK").size()));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -269,25 +300,62 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	public void v_ProcedureStart() {
 		
 		//Scanner Validation
-		this.scannerPage.isScannerResponseValid("Procedure Started");
-		this.scannerPage.isScannerCountValid(8);
+		this.scannerPage.isScannerResponseValid("Procedure Started");		
 		
 		//Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
 		this.unifiaPage.isProcedureRoomScopeUpdated("Procedure Room 1", new String [] {"QVLT0001", "QVLT0002"});
 		
-		// TODO - DB Validation
-		
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSqlForMultipleRowsCreatedInItemHistoryWithCycleEventUpdated, "6", this.utcExecutionTime);
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || (mapDB.get("CycleEventID_FK").size() < 3))
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found < 3", "Failed", mapDB.get("CycleEventID_FK").size()));
+			}
+			else
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found Linked To Association ", "Passed", mapDB.get("CycleEventID_FK").size()));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Vertex
 	public void v_ProcedureEnd() {
 		
 		//Scanner Validation
-		this.scannerPage.isScannerResponseValid("Procedure Completed");
-		this.scannerPage.isScannerCountValid(9);
+		this.scannerPage.isScannerResponseValid("Procedure Completed");		
 		
-		// TODO - DB Validation
+		// DB Validation
+		String strSql = String.format(ITestConstants.strSqlForMultipleRowsCreatedInItemHistoryWithCycleEventUpdated, "7", this.utcExecutionTime);
+		try {						
+			Map<String, List<String>> mapDB = this.dbVerification.getColumnValues(strSql, "Name", "LocationID_FK", "LocationStateID_FK", "AssociationID_FK", "CycleEventID_FK");
+			for(Entry<String, List<String>> mapEntry : mapDB.entrySet())
+			{
+				LOG.info(String.format("Values In %s -> %s", mapEntry.getKey(), mapEntry.getValue()));
+			}
+			if(mapDB.isEmpty() || (mapDB.get("CycleEventID_FK").size() < 3))
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found < 3", "Failed", mapDB.get("CycleEventID_FK").size()));
+			}
+			else
+			{
+				LOG.info(String.format("%s, Actual Rows - %d Found Linked To Association ", "Passed", mapDB.get("CycleEventID_FK").size()));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -295,8 +363,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	public void v_Scope1_PreClean() {
 		
 		//TODO - Scanner Validation
-		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
-		this.scannerPage.isScannerCountValid(10);
+		this.scannerPage.isScannerResponseValid("Pre Clean Completed");		
 		
 		//Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
@@ -312,8 +379,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Staff");
-		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(11);
+		this.scannerPage.isScannerResponseValid("Scanned");		
 		
 		//TODO - DB Validation
 		
@@ -323,8 +389,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	public void v_Scope2_PreClean() {
 		
 		// Scanner Validation
-		this.scannerPage.isScannerResponseValid("Pre Clean Completed");
-		this.scannerPage.isScannerCountValid(12);
+		this.scannerPage.isScannerResponseValid("Pre Clean Completed");		
 		
 		//Dashboard Validation
 		this.unifiaPage.isProcedureRoomStatusUpdated("Procedure Room 1", "In Use");
@@ -338,8 +403,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 		// Scanner Validation
 		this.scannerPage.isScannerResponseValid("Staff");
-		this.scannerPage.isScannerResponseValid("Scanned");
-		this.scannerPage.isScannerCountValid(13);
+		this.scannerPage.isScannerResponseValid("Scanned");		
 		
 		//TODO - DB Validation
 		
@@ -349,8 +413,7 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	public void v_RoomNeedsCleaning() {
 		
 		//Scanner Validation
-		this.scannerPage.isScannerResponseValid("Room Needs Cleaning");
-		this.scannerPage.isScannerCountValid(14);
+		this.scannerPage.isScannerResponseValid("Room Needs Cleaning");		
 		
 		//TODO - DB Validation
 		
