@@ -2,8 +2,8 @@ package poc.cigniti.multiscope.procedure;
 
 public interface ITestConstants {
 	
-	int implicitTimeOut = 30;
-	int pageLoadTimeOut = 30;
+	int implicitTimeOut = 10;
+	int pageLoadTimeOut = 10;
 	String strSQLForWorkFlowValidation = "SELECT [ItemHistoryID_PK]\r\n" + 
 			"      ,[ScanItemID_FK]\r\n" + 
 			"      ,[ScanItemTypeID_FK]\r\n" + 
