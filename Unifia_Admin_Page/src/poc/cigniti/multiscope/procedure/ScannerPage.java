@@ -70,6 +70,7 @@ public class ScannerPage {
 			actualMsg = actualMsg.trim().replaceAll("\\s+", " ");
 			LOG.info(String.format("Failed - Expected Scanner Message - %s Does Not Match With Actual Message - %s",
 					expectedMsg, actualMsg));
+			LOG.info(String.format("Expected Reason - Possibly this test executed under logical navigation test"));
 		}
 		return status;
 

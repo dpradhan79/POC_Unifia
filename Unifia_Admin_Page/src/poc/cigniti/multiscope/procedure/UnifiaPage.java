@@ -32,6 +32,7 @@ public class UnifiaPage {
 			actualStatus = this.driverUnifia.findElement(By.xpath(xpathProcedureRoomStatus)).getText();			
 			LOG.info(String.format("%s - Expected Status - %s Does Not Match Actual Status - %s", "Failed",
 					expectedStatus, actualStatus));
+			LOG.info(String.format("Expected Reason - Possibly this test executed under logical navigation test"));
 		}
 
 		return status;
@@ -59,6 +60,7 @@ public class UnifiaPage {
 			else
 			{
 				LOG.info(String.format("%s->, %s Was Not Found In Actual Scope List - %s", "Failed", scopeName, listElementsText));
+				LOG.info(String.format("Expected Reason - Possibly this test executed under logical navigation test"));
 				statusList.add(false);
 			}
 		}

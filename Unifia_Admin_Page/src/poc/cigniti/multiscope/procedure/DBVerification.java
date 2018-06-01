@@ -104,6 +104,7 @@ public class DBVerification {
 			catch(Exception ex)
 			{
 				LOG.info(String.format("%s ->Column - %s Expected Values - %s Does Not Match With Actual Values - %s", "Failed", tableColumn, listExpectedColValues, listActColValues));
+				LOG.info(String.format("Expected Reason - Possibly this test executed under logical navigation test"));
 			}
 		}
 		
