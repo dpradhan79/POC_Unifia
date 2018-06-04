@@ -8,12 +8,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import poc.cigniti.testreport.IReporter;
+
 public class UnifiaPage {
 	private static final Logger LOG = Logger.getLogger(UnifiaPage.class);
 	private WebDriver driverUnifia;
+	private IReporter testReporter = null;
 
-	public UnifiaPage(WebDriver driverUnifia) {
+	public UnifiaPage(WebDriver driverUnifia, IReporter testReporter) {
 		this.driverUnifia = driverUnifia;
+		this.testReporter = testReporter;
 	}
 
 	public boolean isProcedureRoomStatusUpdated(String procedureRoom, String expectedStatus) {
@@ -27,12 +31,17 @@ public class UnifiaPage {
 			actualStatus = this.driverUnifia.findElement(By.xpath(xpathProcedureRoomStatus)).getText();
 			LOG.info(String.format("%s - Expected Status - %s Matches Actual Status - %s", "Passed", expectedStatus,
 					actualStatus));
+			this.testReporter.logSuccess("isProcedureRoomStatusUpdated", String.format("%s - Expected Status - %s Matches Actual Status - %s", "Passed", expectedStatus,
+					actualStatus));
+			
 			status = true;
 		} catch (Exception ex) {
 			actualStatus = this.driverUnifia.findElement(By.xpath(xpathProcedureRoomStatus)).getText();			
 			LOG.info(String.format("%s - Expected Status - %s Does Not Match Actual Status - %s", "Failed",
 					expectedStatus, actualStatus));
 			LOG.info(String.format("Expected Reason - Possibly this test executed under logical navigation test"));
+			this.testReporter.logFailure("isProcedureRoomStatusUpdated", String.format("%s - Expected Status - %s Does Not Match Actual Status - %s", "Failed",
+					expectedStatus, actualStatus), GenericUtil.getScreenShotName(), this.driverUnifia);			
 		}
 
 		return status;
@@ -55,6 +64,7 @@ public class UnifiaPage {
 			if(listElementsText.contains(scopeName))
 			{
 				LOG.info(String.format("%s->, %s Found In Actual Scope List - %s", "Passed", scopeName, listElementsText));
+				this.testReporter.logSuccess("isProcedureRoomScopeUpdated", String.format("%s->, %s Found In Actual Scope List - %s", "Passed", scopeName, listElementsText));
 				statusList.add(true);
 			}
 			else
@@ -62,6 +72,7 @@ public class UnifiaPage {
 				LOG.info(String.format("%s->, %s Was Not Found In Actual Scope List - %s", "Failed", scopeName, listElementsText));
 				LOG.info(String.format("Expected Reason - Possibly this test executed under logical navigation test"));
 				statusList.add(false);
+				this.testReporter.logFailure("isProcedureRoomScopeUpdated", String.format("%s->, %s Was Not Found In Actual Scope List - %s", "Failed", scopeName, listElementsText), GenericUtil.getScreenShotName(), this.driverUnifia);
 			}
 		}
 		if(!statusList.contains(false))

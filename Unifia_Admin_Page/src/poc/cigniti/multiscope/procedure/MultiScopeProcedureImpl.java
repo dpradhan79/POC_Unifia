@@ -12,6 +12,8 @@ import org.graphwalker.java.annotation.Edge;
 import org.graphwalker.java.annotation.Vertex;
 import org.openqa.selenium.WebDriver;
 
+import poc.cigniti.testreport.IReporter;
+
 public class MultiScopeProcedureImpl extends ExecutionContext {
 	private static final Logger LOG = Logger.getLogger(MultiScopeProcedureImpl.class);
 	private WebDriver driverScanner = null;
@@ -20,15 +22,17 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	private UnifiaPage unifiaPage = null;
 	private DBVerification dbVerification = null;
 	private String utcExecutionTime = null;
-
+	IReporter testReporter = null;
+	
 	public MultiScopeProcedureImpl() {
 	}
 
-	public MultiScopeProcedureImpl(WebDriver driverScanner, WebDriver driverUnifia) {
+	public MultiScopeProcedureImpl(WebDriver driverScanner, WebDriver driverUnifia, IReporter testReporter) {
 		this.driverScanner = driverScanner;
 		this.driverUnifia = driverUnifia;
-		this.scannerPage = new ScannerPage(this.driverScanner);
-		this.unifiaPage = new UnifiaPage(this.driverUnifia);
+		this.testReporter = testReporter;
+		this.scannerPage = new ScannerPage(this.driverScanner, testReporter);
+		this.unifiaPage = new UnifiaPage(this.driverUnifia, testReporter);
 		/*DB Initialization */
 		String DBConnection = "jdbc:sqlserver://SPRINTTEST-03.mitlab.com\\UESQLSVR;databaseName=Unifia";
 		String userName = "Unifia";
@@ -44,9 +48,8 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 	}
 
 	@Edge
-	public void e_scanRoomAvailable() {	
-		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Available");
-
+	public void e_scanRoomAvailable() {			
+		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Available");		
 	}
 
 	@Edge
