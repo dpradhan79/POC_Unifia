@@ -1,5 +1,6 @@
 package poc.cigniti.multiscope.procedure;
 
+import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.graphwalker.core.machine.ExecutionContext;
+import org.graphwalker.core.model.Element;
+import org.graphwalker.java.annotation.BeforeElement;
 import org.graphwalker.java.annotation.Edge;
 import org.graphwalker.java.annotation.Vertex;
 import org.openqa.selenium.WebDriver;
@@ -47,9 +50,13 @@ public class MultiScopeProcedureImpl extends ExecutionContext {
 		
 	}
 
+	
 	@Edge
-	public void e_scanRoomAvailable() {			
-		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Available");		
+	public void e_scanRoomAvailable() {	
+		//this.testReporter.initTestCase(this.getCurrentElement().getName());
+		this.scannerPage.scanItem("Procedure Room 1", "Workflow Event", null, "Available");	
+		//this.testReporter.updateTestCaseStatus();
+		
 	}
 
 	@Edge

@@ -6,13 +6,12 @@ import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import poc.cigniti.testreport.ExtentReporter;
 
 public class GenericUtil {
 	private static final Logger LOG = Logger.getLogger(GenericUtil.class);
@@ -25,6 +24,19 @@ public class GenericUtil {
 
 	}
 
+	public static Boolean waitForPageToLoad(WebDriver webDriver, int timeOutInSecs)
+	{
+		WebDriverWait wait = new WebDriverWait(webDriver, timeOutInSecs);
+		Boolean status = wait.until(new ExpectedCondition<Boolean>() {
+
+			@Override
+			public Boolean apply(WebDriver webDriver) {
+				return ((JavascriptExecutor) webDriver).executeScript("return document.readyState").toString().equals("complete");
+			}
+		});
+		
+		return status;
+	}
 	public static Boolean waitUntilExpectedMessageAppears(WebDriver webDriver, final By byObject,
 			final String expectedMessage, int timeOutInSecs) {
 		WebDriverWait wait = new WebDriverWait(webDriver, timeOutInSecs);

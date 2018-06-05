@@ -27,6 +27,11 @@ public class ScannerPage {
 		// Location
 		try
 		{
+			GenericUtil.waitForPageToLoad(this.driverScanner, ITestConstants.pageLoadTimeOut);
+		}
+		catch(Exception ex) {};
+		try
+		{
 		GenericUtil.waitUntilListPopulates(this.driverScanner, By.id("UID_DropDownLocations"), ITestConstants.implicitTimeOut);
 		Select scannerLocation = new Select(this.driverScanner.findElement(By.id("UID_DropDownLocations")));		
 		scannerLocation.selectByVisibleText(location);
@@ -73,6 +78,11 @@ public class ScannerPage {
 		boolean status = false;
 		final String xpathScanMsg = "//*[@id='ScannerEntryPad']/tbody/tr[1]/td/textarea";
 		String actualMsg = null;
+		try
+		{
+			GenericUtil.waitForPageToLoad(this.driverScanner, ITestConstants.pageLoadTimeOut);
+		}
+		catch(Exception ex) {};
 		try {
 			GenericUtil.waitUntilExpectedAttributeAppears(this.driverScanner, By.xpath(xpathScanMsg), "value",
 					expectedMsg, ITestConstants.implicitTimeOut);

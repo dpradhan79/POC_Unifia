@@ -80,7 +80,11 @@ public class TestMultiScopeProcedure {
 		this.driverUnifia.manage().timeouts().pageLoadTimeout(this.pageLoadTimeOut, TimeUnit.SECONDS);
 		this.driverUnifia.manage().window().maximize();
 		LOG.info(String.format("Browser Opened For dashboard - %s", this.urlUnifiaDashboard));
-
+		try
+		{
+			GenericUtil.waitForPageToLoad(this.driverUnifia, ITestConstants.pageLoadTimeOut);
+		}
+		catch(Exception ex) {};
 		// Code Re-used From Unifia_Admin_Selenium
 		Unifia_Admin_Selenium.driver = (RemoteWebDriver) this.driverUnifia;
 		Login_Actions.Logon_Username("qvtest01");

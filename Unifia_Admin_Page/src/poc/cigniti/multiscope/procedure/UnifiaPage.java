@@ -5,8 +5,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.thoughtworks.selenium.webdriven.commands.WaitForPageToLoad;
 
 import poc.cigniti.testreport.IReporter;
 
@@ -25,6 +28,11 @@ public class UnifiaPage {
 		String xpathProcedureRoomStatus = String
 				.format("//span[text() = '%s']/parent::div/following-sibling::div[1]", procedureRoom);	
 		String actualStatus = null;
+		try
+		{
+			GenericUtil.waitForPageToLoad(this.driverUnifia, ITestConstants.pageLoadTimeOut);
+		}
+		catch(Exception ex) {};
 		try {
 			GenericUtil.waitUntilExpectedMessageAppears(this.driverUnifia, By.xpath(xpathProcedureRoomStatus),
 					expectedStatus, ITestConstants.implicitTimeOut);
@@ -53,11 +61,30 @@ public class UnifiaPage {
 		List<Boolean>statusList = new ArrayList<>();
 		String xpathProcedureRoomScopeList = String
 				.format("//span[text() = '%s']/parent::div/following-sibling::div[2]/div", procedureRoom);
+		try
+		{
+			GenericUtil.forcedWait(3);
+			GenericUtil.waitForPageToLoad(this.driverUnifia, ITestConstants.pageLoadTimeOut);
+		}
+		catch(Exception ex) {};
 		List<WebElement> listElements = this.driverUnifia.findElements(By.xpath(xpathProcedureRoomScopeList));
 		List<String> listElementsText = new ArrayList<>();
-		for(WebElement element : listElements)
+		/*for(WebElement element : listElements)
 		{
 			listElementsText.add(element.getText());
+		}*/
+		for(int countElement = 0; countElement < listElements.size(); countElement ++ )
+		{
+			listElements = this.driverUnifia.findElements(By.xpath(xpathProcedureRoomScopeList));
+			try
+			{
+			listElementsText.add(listElements.get(countElement).getText());
+			}
+			catch(StaleElementReferenceException ex)
+			{
+				listElements = this.driverUnifia.findElements(By.xpath(xpathProcedureRoomScopeList));
+				listElementsText.add(listElements.get(countElement).getText());
+			}
 		}
 		for(String scopeName : arrayScopeNames)
 		{
